@@ -14,34 +14,34 @@ public class Weather
     private String zip;
     private JsonElement json;
 
-    public Weather(String zipcode)
+    public Weather(String zipCode)
     {
-        zip = zipcode;
+        zip = zipCode;
     }
 
     public String getLocation()
     {
-        return json.getAsJsonObject()
+        return json.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("display_location").getAsJsonObject()
                 .get("full").getAsString();
     }
 
     public String getTemp()
     {
-        return json.getAsJsonObject()
+        return json.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("temp_f").getAsString();
     }
 
-    public String getCondution()
+    public String getCondition()
     {
-        return json.getAsJsonObject()
+        return json.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("weather").getAsString();
     }
 
 
     public void fetch()
     {
-        String wdRequest = "http://api.Weather.com/api/1655f919bbcd29ed/conditions/q/" + zip +".json";
+        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/q/" + zip +".json";
 
         try
         {

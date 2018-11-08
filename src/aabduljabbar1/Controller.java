@@ -17,15 +17,23 @@ public class Controller {
     @FXML
     Label tem;
 
-    public void handleGetWeatherButton(ActionEvent e)
+    public void handleWeatherButton(ActionEvent e)
     {
         Weather W = new Weather(zipField.getText());
         W.fetch();
         loc.setText(W.getLocation());
         loc.setVisible(true);
-        con.setText(W.getCondution());
+        con.setText(W.getCondition());
         con.setVisible(true);
         tem.setText(W.getTemp());
         tem.setVisible(true);
+    }
+
+    public void handleClearButton(ActionEvent e)
+    {
+        zipField.setText("");
+        loc.setText("");
+        con.setText("");
+        tem.setText("");
     }
 }

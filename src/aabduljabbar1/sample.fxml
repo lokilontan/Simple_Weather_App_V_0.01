@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aabduljabbar1.wunderground">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aabduljabbar1.Controller">
    <children>
-      <Button layoutX="109.0" layoutY="65.0" mnemonicParsing="false" text="Get Weather" />
+      <Button layoutX="89.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleWeatherButton" text="Get Weather" />
       <Label layoutX="19.0" layoutY="27.0" text="Zipcode" />
       <Label layoutX="19.0" layoutY="117.0" prefHeight="21.0" prefWidth="73.0" text="Location:">
          <font>
@@ -26,21 +25,22 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField layoutX="89.0" layoutY="23.0" />
-      <Label layoutX="114.0" layoutY="117.0" prefHeight="21.0" prefWidth="73.0" text="loc" visible="false">
+      <TextField fx:id="zipField" layoutX="89.0" layoutY="23.0" />
+      <Label fx:id="con" layoutX="100.0" layoutY="167.0" prefHeight="21.0" prefWidth="142.0" text="con" visible="false">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="114.0" layoutY="167.0" prefHeight="21.0" prefWidth="73.0" text="con" visible="false">
+      <Label fx:id="tem" layoutX="201.0" layoutY="215.0" prefHeight="21.0" prefWidth="92.0" text="tem" visible="false">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="201.0" layoutY="215.0" prefHeight="21.0" prefWidth="73.0" text="tem" visible="false">
+      <Label fx:id="loc" layoutX="100.0" layoutY="117.0" prefHeight="21.0" prefWidth="142.0" text="loc" visible="false">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
+      <Button fx:id="clear" layoutX="190.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleClearButton" text="Clear" />
    </children>
 </Pane>
