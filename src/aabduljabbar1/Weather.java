@@ -19,20 +19,20 @@ public class Weather
         zip = zipCode;
     }
 
-    public String getLocation()
+    public String getCityState()
     {
         return json.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("display_location").getAsJsonObject()
                 .get("full").getAsString();
     }
 
-    public String getTemp()
+    public String getTemperature()
     {
         return json.getAsJsonObject().get("current_observation").getAsJsonObject()
-                .get("temp_f").getAsString();
+                .get("temp_f").getAsString() + "°";
     }
 
-    public String getCondition()
+    public String getWeather()
     {
         return json.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("weather").getAsString();
