@@ -32,10 +32,16 @@ public class Weather
                 .get("full").getAsString();
     }
 
-    public String getTemperature()
+    public String getTemperatureF()
     {
         return json.getAsJsonObject().get("current_observation").getAsJsonObject()
-                .get("temp_f").getAsString() + "°";
+                .get("temp_f").getAsString() + "° F";
+    }
+
+    public String getTemperatureC()
+    {
+        return json.getAsJsonObject().get("current_observation").getAsJsonObject()
+                .get("temp_c").getAsString() + "° C";
     }
 
     public String getWeather()
