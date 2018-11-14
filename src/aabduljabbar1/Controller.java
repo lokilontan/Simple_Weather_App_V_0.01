@@ -53,7 +53,7 @@ public class Controller {
         temF.setText("");
     }
 
-    public handleTempButton(ActionEvent e)
+    public void handleTempButton(ActionEvent e)
     {
         int count = 0;
         if(count == 0){
