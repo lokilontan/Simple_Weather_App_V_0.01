@@ -19,6 +19,12 @@ public class Weather
         zip = zipCode;
     }
 
+    public String getImageString(){
+        return json.getAsJsonObject().get("current_observation").getAsJsonObject()
+                .get("icon_url").getAsString();
+
+    }
+
     public String getCityState()
     {
         return json.getAsJsonObject().get("current_observation").getAsJsonObject()
