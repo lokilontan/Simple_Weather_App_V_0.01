@@ -35,6 +35,7 @@ public class Controller {
         W.fetch();
         Image imgCondition = new Image(W.getImageString());
         imgView.setImage(imgCondition);
+        imgView.setVisible(true);
         loc.setText(W.getCityState());
         loc.setVisible(true);
         con.setText(W.getWeather());
@@ -51,6 +52,8 @@ public class Controller {
         loc.setText("");
         con.setText("");
         temF.setText("");
+        temC.setText("");
+        imgView.setVisible(false);
     }
 
     public void handleTempButton(ActionEvent e)
