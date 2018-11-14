@@ -15,7 +15,9 @@ public class Controller {
     @FXML
     Label con;
     @FXML
-    Label tem;
+    Label temF;
+    @FXML
+    Label temC;
 
     public void handleWeatherButton(ActionEvent e)
     {
@@ -25,8 +27,9 @@ public class Controller {
         loc.setVisible(true);
         con.setText(W.getWeather());
         con.setVisible(true);
-        tem.setText(W.getTemperature());
-        tem.setVisible(true);
+        temF.setText(W.getTemperatureF());
+        temF.setVisible(true);
+        temC.setVisible(false);
     }
 
     public void handleClearButton(ActionEvent e)
@@ -34,6 +37,22 @@ public class Controller {
         zipField.setText("");
         loc.setText("");
         con.setText("");
-        tem.setText("");
+        temF.setText("");
+    }
+
+    public handleTempButton(ActionEvent e)
+    {
+        int count = 0;
+        if(count == 0){
+            temF.setVisible(false);
+            temC.setVisible(true);
+            count++;
+        }
+        else
+        {
+            temF.setVisible(true);
+            temC.setVisible(false);
+            count--;
+        }
     }
 }
