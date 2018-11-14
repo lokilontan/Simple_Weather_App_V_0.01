@@ -21,27 +21,27 @@ public class Controller {
     Label tem;
     @FXML
     ImageView imgView;
-
-
+    @FXML
     Label temF;
     @FXML
     Label temC;
+
+    int count = 0;
+
 
     public void handleWeatherButton(ActionEvent e)
     {
         Weather W = new Weather(zipField.getText());
         W.fetch();
-
         Image imgCondition = new Image(W.getImageString());
         imgView.setImage(imgCondition);
-
-
         loc.setText(W.getCityState());
         loc.setVisible(true);
         con.setText(W.getWeather());
         con.setVisible(true);
         temF.setText(W.getTemperatureF());
         temF.setVisible(true);
+        temC.setText(W.getTemperatureC());
         temC.setVisible(false);
     }
 
@@ -55,7 +55,6 @@ public class Controller {
 
     public void handleTempButton(ActionEvent e)
     {
-        int count = 0;
         if(count == 0){
             temF.setVisible(false);
             temC.setVisible(true);

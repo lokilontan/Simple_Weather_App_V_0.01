@@ -9,8 +9,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aabduljabbar1.Controller">
    <children>
-      <Button layoutX="89.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleWeatherButton" text="Get Weather" />
-      <Label layoutX="19.0" layoutY="27.0" text="Zipcode" />
+      <Button layoutX="121.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleWeatherButton" prefHeight="25.0" prefWidth="83.0" text="Get Weather" />
+      <Label layoutX="14.0" layoutY="27.0" text="Zipcode" />
       <Label layoutX="19.0" layoutY="117.0" prefHeight="21.0" prefWidth="73.0" text="Location:">
          <font>
             <Font size="15.0" />
@@ -21,19 +21,19 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="19.0" layoutY="215.0" text="Current Temperature (F):">
+      <Label layoutX="19.0" layoutY="226.0" text="Current Temperature (F):">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="zipField" layoutX="89.0" layoutY="23.0" />
-      <ImageView fx:id="imgView" fitHeight="77.0" fitWidth="92.0" layoutX="192.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="zipField" layoutX="65.0" layoutY="23.0" prefHeight="25.0" prefWidth="197.0" />
+      <ImageView fx:id="imgView" fitHeight="77.0" fitWidth="92.0" layoutX="192.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="con" layoutX="100.0" layoutY="167.0" prefHeight="21.0" prefWidth="125.0" text="con" visible="false">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="temF" layoutX="201.0" layoutY="215.0" prefHeight="21.0" prefWidth="92.0" text="tem" visible="false">
+      <Label fx:id="temF" layoutX="204.0" layoutY="226.0" prefHeight="21.0" prefWidth="92.0" text="temF" visible="false">
          <font>
             <Font size="15.0" />
          </font>
@@ -43,6 +43,12 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="clear" layoutX="190.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleClearButton" text="Clear" />
+      <Button fx:id="clear" layoutX="217.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleClearButton" text="Clear" />
+      <Button layoutX="66.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleTempButton" prefHeight="25.0" prefWidth="43.0" text="C / F" />
+      <Label fx:id="temC" layoutX="204.0" layoutY="226.0" prefHeight="21.0" prefWidth="92.0" text="temC" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
