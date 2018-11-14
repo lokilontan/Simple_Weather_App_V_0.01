@@ -26,7 +26,7 @@
          </font>
       </Label>
       <TextField fx:id="zipField" layoutX="89.0" layoutY="23.0" />
-      <Label fx:id="con" layoutX="100.0" layoutY="167.0" prefHeight="21.0" prefWidth="142.0" text="con" visible="false">
+      <Label fx:id="con" layoutX="100.0" layoutY="167.0" prefHeight="21.0" prefWidth="197.0" text="con" visible="false">
          <font>
             <Font size="15.0" />
          </font>
@@ -36,7 +36,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="loc" layoutX="100.0" layoutY="117.0" prefHeight="21.0" prefWidth="142.0" text="loc" visible="false">
+      <Label fx:id="loc" layoutX="100.0" layoutY="117.0" prefHeight="21.0" prefWidth="197.0" text="loc" visible="false">
          <font>
             <Font size="15.0" />
          </font>

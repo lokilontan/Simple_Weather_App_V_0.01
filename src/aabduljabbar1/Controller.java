@@ -21,11 +21,11 @@ public class Controller {
     {
         Weather W = new Weather(zipField.getText());
         W.fetch();
-        loc.setText(W.getLocation());
+        loc.setText(W.getCityState());
         loc.setVisible(true);
-        con.setText(W.getCondition());
+        con.setText(W.getWeather());
         con.setVisible(true);
-        tem.setText(W.getTemp());
+        tem.setText(W.getTemperature());
         tem.setVisible(true);
     }
 
