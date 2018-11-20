@@ -33,11 +33,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="temF" layoutX="204.0" layoutY="216.0" prefHeight="21.0" prefWidth="92.0" text="temF" visible="false">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
       <Label fx:id="loc" layoutX="100.0" layoutY="117.0" prefHeight="21.0" prefWidth="197.0" text="loc" visible="false">
          <font>
             <Font size="15.0" />
@@ -45,7 +40,12 @@
       </Label>
       <Button fx:id="clear" layoutX="217.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleClearButton" text="Clear" />
       <Button layoutX="66.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleTempButton" prefHeight="25.0" prefWidth="43.0" text="C / F" />
-      <Label fx:id="temC" layoutX="204.0" layoutY="216.0" prefHeight="21.0" prefWidth="92.0" text="temC" visible="false">
+      <Label fx:id="temF" layoutX="179.0" layoutY="216.0" prefHeight="21.0" prefWidth="92.0" text="temF" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="temC" layoutX="179.0" layoutY="216.0" prefHeight="21.0" prefWidth="92.0" text="temC" visible="false">
          <font>
             <Font size="15.0" />
          </font>
