@@ -2,15 +2,14 @@ package aabduljabbar1;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+
 public class Weather
 {
-    //private final String token = "b67d63a8e7ca97f75c63254fda3a94d60ae60c2e";
     private String zip;
     private JsonElement json;
 
