@@ -2,12 +2,11 @@ package aabduljabbar1;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-
 
 public class Controller {
 
@@ -18,13 +17,13 @@ public class Controller {
     @FXML
     Label con;
     @FXML
-    Label tem;
-    @FXML
     ImageView imgView;
     @FXML
     Label temF;
     @FXML
     Label temC;
+    @FXML
+    Button copyRight;
 
     int count = 0;
 
@@ -69,5 +68,10 @@ public class Controller {
             temC.setVisible(false);
             count--;
         }
+    }
+
+    public void handleCopyRightButton(ActionEvent e)
+    {
+        CopyRightBox.display("Copyright", "© AVA Coders, LLC. All Rights Reserved.");
     }
 }
