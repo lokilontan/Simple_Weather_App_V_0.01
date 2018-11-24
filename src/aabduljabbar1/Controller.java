@@ -34,6 +34,7 @@ public class Controller {
 
     CurrentWeather CW = new CurrentWeather();
 
+
     public void handleListView() {
         zipField.setText(listCities.getSelectionModel().getSelectedItem().toString());
         listCities.setVisible(false);
@@ -44,9 +45,9 @@ public class Controller {
     }
 
     public void handleInputField() {
-        
         listCities.getItems().clear();
-        Cities c = new Cities(zipField.getText());
+        //if (zipField.getText())
+        Cities c = new Cities(zipField.getText().replace(" ", "%20"));
         c.getCities();
         c.collectCities(listCities);
         if (c.a.size()==0) listCities.setVisible(false);
