@@ -27,10 +27,28 @@ public class Controller {
 
     int count = 0;
 
+    CurrentWeather CW = new CurrentWeather();
+
+    public void initialize(){
+
+        CW.fetchCurrent();
+        Image imgCondition = new Image(CW.getImageString(CW.CurrentJson));
+        imgView.setImage(imgCondition);
+        imgView.setVisible(true);
+        loc.setText(CW.getCityState(CW.CurrentJson));
+        loc.setVisible(true);
+        con.setText(CW.getWeather(CW.CurrentJson));
+        con.setVisible(true);
+        temF.setText(CW.getTemperatureF(CW.CurrentJson));
+        temF.setVisible(true);
+        temC.setText(CW.getTemperatureC(CW.CurrentJson));
+        temC.setVisible(false);
+    }
+
+
 
     public void handleWeatherButton(ActionEvent e)
-    {
-        Weather W = new Weather(zipField.getText());
+    {   Weather W = new Weather(zipField.getText());
         W.fetch();
         Image imgCondition = new Image(W.getImageString(W.DynamicJson));
         imgView.setImage(imgCondition);
@@ -48,11 +66,17 @@ public class Controller {
     public void handleClearButton(ActionEvent e)
     {
         zipField.setText("");
-        loc.setText("");
-        con.setText("");
-        temF.setText("");
-        temC.setText("");
-        imgView.setVisible(false);
+        Image imgCondition = new Image(CW.getImageString(CW.CurrentJson));
+        imgView.setImage(imgCondition);
+        imgView.setVisible(true);
+        loc.setText(CW.getCityState(CW.CurrentJson));
+        loc.setVisible(true);
+        con.setText(CW.getWeather(CW.CurrentJson));
+        con.setVisible(true);
+        temF.setText(CW.getTemperatureF(CW.CurrentJson));
+        temF.setVisible(true);
+        temC.setText(CW.getTemperatureC(CW.CurrentJson));
+        temC.setVisible(false);
     }
 
     public void handleTempButton(ActionEvent e)

@@ -7,17 +7,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+public class CurrentWeather {
 
-public class Weather
-{
-    private String zip;
-    public JsonElement DynamicJson; //json for any weather call
-
-
-    public Weather(String zipCode)
-    {
-        zip = zipCode;
-    }
+    public JsonElement CurrentJson; //json for current weather
 
     public String getImageString(JsonElement j){
         return j.getAsJsonObject().get("current_observation").getAsJsonObject()
@@ -50,10 +42,10 @@ public class Weather
                 .get("weather").getAsString();
     }
 
-
-    public void fetch()
+    //Method for getting weather for location based on the user`s IP
+    public void fetchCurrent()
     {
-        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/q/" + zip +".json";
+        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/q/autoip.json";
 
         try
         {
@@ -64,7 +56,7 @@ public class Weather
             BufferedReader br = new BufferedReader(isr);
 
             JsonParser parser = new JsonParser();
-            DynamicJson = parser.parse(br);
+            CurrentJson = parser.parse(br);
         }
         catch (java.net.MalformedURLException mue)
         {
