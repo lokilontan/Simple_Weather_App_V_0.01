@@ -10,14 +10,25 @@ import java.net.URL;
 
 public class Weather
 {
-    private String zip;
+    private String zip, city, state;
     public JsonElement DynamicJson; //json for any weather call
 
 
     public Weather(String zipCode)
     {
         zip = zipCode;
+
+        if (zip.contains("-")) { zip = zip.substring(0, 5);
+            }
+        else if (zip.contains(",")) {int i = zip.indexOf(","); city = zip.substring(0, i);
+            state = zip.substring(i+2, zip.length());
+            zip = state + "/" + city;
+            zip = zip.replace(" ", "%20");
+        }
+        else zip = zip.replace(" ", "%20");
     }
+
+
 
     public String getImageString(JsonElement j){
         return j.getAsJsonObject().get("current_observation").getAsJsonObject()
@@ -54,6 +65,33 @@ public class Weather
     public void fetch()
     {
         String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/q/" + zip +".json";
+
+        try
+        {
+            URL wdURL = new URL(wdRequest);
+
+            InputStream is = wdURL.openStream();
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader br = new BufferedReader(isr);
+
+            JsonParser parser = new JsonParser();
+            DynamicJson = parser.parse(br);
+        }
+        catch (java.net.MalformedURLException mue)
+        {
+            System.out.println("URL not valid");
+            System.exit(1);
+        }
+        catch (java.io.IOException ioe)
+        {
+            System.out.println("IO Exception Caught");
+            System.exit(1);
+        }
+    }
+
+    public void fetchCityState(String c, String s)
+    {
+        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/q/"+s+"/"+c+".json";
 
         try
         {

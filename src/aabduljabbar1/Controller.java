@@ -46,7 +46,6 @@ public class Controller {
 
     public void handleInputField() {
         listCities.getItems().clear();
-        //if (zipField.getText())
         Cities c = new Cities(zipField.getText().replace(" ", "%20"));
         c.getCities();
         c.collectCities(listCities);
@@ -57,49 +56,69 @@ public class Controller {
     public void initialize(){
 
         CW.fetchCurrent();
-        Image imgCondition = new Image(CW.getImageString(CW.CurrentJson));
-        imgView.setImage(imgCondition);
-        imgView.setVisible(true);
-        loc.setText(CW.getCityState(CW.CurrentJson));
-        loc.setVisible(true);
-        con.setText(CW.getWeather(CW.CurrentJson));
-        con.setVisible(true);
-        temF.setText(CW.getTemperatureF(CW.CurrentJson));
-        temF.setVisible(true);
-        temC.setText(CW.getTemperatureC(CW.CurrentJson));
-        temC.setVisible(false);
+        try {
+            Image imgCondition = new Image(CW.getImageString(CW.CurrentJson));
+            imgView.setImage(imgCondition);
+            imgView.setVisible(true);
+            loc.setText(CW.getCityState(CW.CurrentJson));
+            loc.setVisible(true);
+            con.setText(CW.getWeather(CW.CurrentJson));
+            con.setVisible(true);
+            temF.setText(CW.getTemperatureF(CW.CurrentJson));
+            temF.setVisible(true);
+            temC.setText(CW.getTemperatureC(CW.CurrentJson));
+            temC.setVisible(false);
+        }
+        catch (NullPointerException npe) {
+            System.out.println("Didn`t catch data during initialization. Try again!");
+        }
     }
 
     public void handleWeatherButton(ActionEvent e)
-    {   Weather W = new Weather(zipField.getText());
+    {
+        Weather W = new Weather(zipField.getText());
+
         W.fetch();
-        Image imgCondition = new Image(W.getImageString(W.DynamicJson));
-        imgView.setImage(imgCondition);
-        imgView.setVisible(true);
-        loc.setText(W.getCityState(W.DynamicJson));
-        loc.setVisible(true);
-        con.setText(W.getWeather(W.DynamicJson));
-        con.setVisible(true);
-        temF.setText(W.getTemperatureF(W.DynamicJson));
-        temF.setVisible(true);
-        temC.setText(W.getTemperatureC(W.DynamicJson));
-        temC.setVisible(false);
+        try {
+            Image imgCondition = new Image(W.getImageString(W.DynamicJson));
+            imgView.setImage(imgCondition);
+            imgView.setVisible(true);
+            loc.setText(W.getCityState(W.DynamicJson));
+            loc.setVisible(true);
+            con.setText(W.getWeather(W.DynamicJson));
+            con.setVisible(true);
+            temF.setText(W.getTemperatureF(W.DynamicJson));
+            temF.setVisible(true);
+            temC.setText(W.getTemperatureC(W.DynamicJson));
+            temC.setVisible(false);
+        }
+        catch (NullPointerException nue) {
+            System.out.println("Something went wrong (NullPointerException). Try again!");
+        }
     }
 
     public void handleClearButton(ActionEvent e)
     {
         zipField.setText("");
-        Image imgCondition = new Image(CW.getImageString(CW.CurrentJson));
-        imgView.setImage(imgCondition);
-        imgView.setVisible(true);
-        loc.setText(CW.getCityState(CW.CurrentJson));
-        loc.setVisible(true);
-        con.setText(CW.getWeather(CW.CurrentJson));
-        con.setVisible(true);
-        temF.setText(CW.getTemperatureF(CW.CurrentJson));
-        temF.setVisible(true);
-        temC.setText(CW.getTemperatureC(CW.CurrentJson));
-        temC.setVisible(false);
+        try {
+            Image imgCondition = new Image(CW.getImageString(CW.CurrentJson));
+            imgView.setImage(imgCondition);
+            imgView.setVisible(true);
+            loc.setText(CW.getCityState(CW.CurrentJson));
+            loc.setVisible(true);
+            con.setText(CW.getWeather(CW.CurrentJson));
+            con.setVisible(true);
+            temF.setText(CW.getTemperatureF(CW.CurrentJson));
+            temF.setVisible(true);
+            temC.setText(CW.getTemperatureC(CW.CurrentJson));
+            temC.setVisible(false);
+        }
+        catch (NullPointerException npe)
+        {   imgView.setVisible(false);
+            loc.setVisible(false);
+            con.setVisible(false);
+            temF.setVisible(false);
+        }
     }
 
     public void handleTempButton(ActionEvent e)

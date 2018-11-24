@@ -26,7 +26,6 @@ public class Cities {
     public void getCities()
     {
         String wdRequest = "http://autocomplete.wunderground.com/aq?query=" + character;
-        System.out.println(wdRequest);
         try
         {
             URL wdURL = new URL(wdRequest);
