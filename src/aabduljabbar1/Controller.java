@@ -1,12 +1,15 @@
 package aabduljabbar1;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 
 public class Controller {
 
@@ -24,10 +27,31 @@ public class Controller {
     Label temC;
     @FXML
     Button copyRight;
+    @FXML
+    ListView listCities;
 
     int count = 0;
 
     CurrentWeather CW = new CurrentWeather();
+
+    public void handleListView() {
+        zipField.setText(listCities.getSelectionModel().getSelectedItem().toString());
+        listCities.setVisible(false);
+    }
+
+    public void handlePaneClick(){
+        listCities.setVisible(false);
+    }
+
+    public void handleInputField() {
+        
+        listCities.getItems().clear();
+        Cities c = new Cities(zipField.getText());
+        c.getCities();
+        c.collectCities(listCities);
+        if (c.a.size()==0) listCities.setVisible(false);
+        else listCities.setVisible(true);
+    }
 
     public void initialize(){
 
@@ -44,8 +68,6 @@ public class Controller {
         temC.setText(CW.getTemperatureC(CW.CurrentJson));
         temC.setVisible(false);
     }
-
-
 
     public void handleWeatherButton(ActionEvent e)
     {   Weather W = new Weather(zipField.getText());
