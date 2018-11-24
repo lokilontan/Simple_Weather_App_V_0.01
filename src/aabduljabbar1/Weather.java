@@ -11,41 +11,43 @@ import java.net.URL;
 public class Weather
 {
     private String zip;
-    private JsonElement json;
+    public JsonElement DynamicJson; //json for any weather calls
+    public JsonElement CurrentJson; //json for current weather
+
 
     public Weather(String zipCode)
     {
         zip = zipCode;
     }
 
-    public String getImageString(){
-        return json.getAsJsonObject().get("current_observation").getAsJsonObject()
+    public String getImageString(JsonElement j){
+        return j.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("icon_url").getAsString();
 
     }
 
-    public String getCityState()
+    public String getCityState(JsonElement j)
     {
-        return json.getAsJsonObject().get("current_observation").getAsJsonObject()
+        return j.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("display_location").getAsJsonObject()
                 .get("full").getAsString();
     }
 
-    public String getTemperatureF()
+    public String getTemperatureF(JsonElement j)
     {
-        return json.getAsJsonObject().get("current_observation").getAsJsonObject()
+        return j.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("temp_f").getAsString() + "° F";
     }
 
-    public String getTemperatureC()
+    public String getTemperatureC(JsonElement j)
     {
-        return json.getAsJsonObject().get("current_observation").getAsJsonObject()
+        return j.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("temp_c").getAsString() + "° C";
     }
 
-    public String getWeather()
+    public String getWeather(JsonElement j)
     {
-        return json.getAsJsonObject().get("current_observation").getAsJsonObject()
+        return j.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("weather").getAsString();
     }
 
@@ -63,7 +65,35 @@ public class Weather
             BufferedReader br = new BufferedReader(isr);
 
             JsonParser parser = new JsonParser();
-            json = parser.parse(br);
+            DynamicJson = parser.parse(br);
+        }
+        catch (java.net.MalformedURLException mue)
+        {
+            System.out.println("URL not valid");
+            System.exit(1);
+        }
+        catch (java.io.IOException ioe)
+        {
+            System.out.println("IO Exception Caught");
+            System.exit(1);
+        }
+    }
+
+    //Method for getting weather for location based on the user`s IP
+    public void fetchCurrent()
+    {
+        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/q/autoip.json";
+
+        try
+        {
+            URL wdURL = new URL(wdRequest);
+
+            InputStream is = wdURL.openStream();
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader br = new BufferedReader(isr);
+
+            JsonParser parser = new JsonParser();
+            CurrentJson = parser.parse(br);
         }
         catch (java.net.MalformedURLException mue)
         {

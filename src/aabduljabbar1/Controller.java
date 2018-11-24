@@ -32,16 +32,16 @@ public class Controller {
     {
         Weather W = new Weather(zipField.getText());
         W.fetch();
-        Image imgCondition = new Image(W.getImageString());
+        Image imgCondition = new Image(W.getImageString(W.DynamicJson));
         imgView.setImage(imgCondition);
         imgView.setVisible(true);
-        loc.setText(W.getCityState());
+        loc.setText(W.getCityState(W.DynamicJson));
         loc.setVisible(true);
-        con.setText(W.getWeather());
+        con.setText(W.getWeather(W.DynamicJson));
         con.setVisible(true);
-        temF.setText(W.getTemperatureF());
+        temF.setText(W.getTemperatureF(W.DynamicJson));
         temF.setVisible(true);
-        temC.setText(W.getTemperatureC());
+        temC.setText(W.getTemperatureC(W.DynamicJson));
         temC.setVisible(false);
     }
 
