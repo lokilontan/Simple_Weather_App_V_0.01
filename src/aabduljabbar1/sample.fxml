@@ -20,22 +20,21 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" text="Not Implemented Yet!" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" text="Not Implemented Yet!" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" text="Not Implemented Yet!" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <ListView fx:id="listCities" layoutX="65.0" layoutY="50.0" onMouseClicked="#handleListView" opacity="0.92" prefHeight="68.0" prefWidth="197.0" visible="false" />
       <Button layoutX="407.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleWeatherButton" prefHeight="25.0" prefWidth="83.0" text="Get Weather" />
       <TextField fx:id="zipField" layoutX="146.0" layoutY="38.0" onKeyTyped="#handleInputField" prefHeight="25.0" prefWidth="197.0" promptText="Enter Zip/State/City here" />
       <ImageView fx:id="imgView" fitHeight="68.0" fitWidth="71.0" layoutX="260.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
@@ -108,5 +107,6 @@
       <Line endX="79.5" endY="91.5" layoutX="358.0" layoutY="412.0" startX="79.5" startY="-55.0" />
       <Line endX="79.5" endY="91.5" layoutX="465.0" layoutY="412.0" startX="79.5" startY="-55.0" />
       <Line endX="79.5" endY="91.5" layoutX="577.0" layoutY="412.0" startX="79.5" startY="-55.0" />
+      <ListView fx:id="listCities" layoutX="146.0" layoutY="64.0" onMouseClicked="#handleListView" opacity="0.92" prefHeight="68.0" prefWidth="197.0" visible="false" />
    </children>
 </Pane>
