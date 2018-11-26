@@ -326,12 +326,84 @@ public class Controller {
         if(count == 0){
             temF1.setVisible(true);
             temC1.setVisible(false);
+
+            highTempFDay0.setVisible(true);
+            highTempCDay0.setVisible(false);
+            lowTempFDay0.setVisible(true);
+            lowTempCDay0.setVisible(false);
+
+            highTempFDay1.setVisible(true);
+            highTempCDay1.setVisible(false);
+            lowTempFDay1.setVisible(true);
+            lowTempCDay1.setVisible(false);
+
+            highTempFDay2.setVisible(true);
+            highTempCDay2.setVisible(false);
+            lowTempFDay2.setVisible(true);
+            lowTempCDay2.setVisible(false);
+
+            highTempFDay3.setVisible(true);
+            highTempCDay3.setVisible(false);
+            lowTempFDay3.setVisible(true);
+            lowTempCDay3.setVisible(false);
+
+            highTempFDay4.setVisible(true);
+            highTempCDay4.setVisible(false);
+            lowTempFDay4.setVisible(true);
+            lowTempCDay4.setVisible(false);
+
+            highTempFDay5.setVisible(true);
+            highTempCDay5.setVisible(false);
+            lowTempFDay5.setVisible(true);
+            lowTempCDay5.setVisible(false);
+
+            highTempFDay6.setVisible(true);
+            highTempCDay6.setVisible(false);
+            lowTempFDay6.setVisible(true);
+            lowTempCDay6.setVisible(false);
+
             count++;
         }
         else
         {
             temF1.setVisible(false);
             temC1.setVisible(true);
+
+            highTempFDay0.setVisible(false);
+            highTempCDay0.setVisible(true);
+            lowTempFDay0.setVisible(false);
+            lowTempCDay0.setVisible(true);
+
+            highTempFDay1.setVisible(false);
+            highTempCDay1.setVisible(true);
+            lowTempFDay1.setVisible(false);
+            lowTempCDay1.setVisible(true);
+
+            highTempFDay2.setVisible(false);
+            highTempCDay2.setVisible(true);
+            lowTempFDay2.setVisible(false);
+            lowTempCDay2.setVisible(true);
+
+            highTempFDay3.setVisible(false);
+            highTempCDay3.setVisible(true);
+            lowTempFDay3.setVisible(false);
+            lowTempCDay3.setVisible(true);
+
+            highTempFDay4.setVisible(false);
+            highTempCDay4.setVisible(true);
+            lowTempFDay4.setVisible(false);
+            lowTempCDay4.setVisible(true);
+
+            highTempFDay5.setVisible(false);
+            highTempCDay5.setVisible(true);
+            lowTempFDay5.setVisible(false);
+            lowTempCDay5.setVisible(true);
+
+            highTempFDay6.setVisible(false);
+            highTempCDay6.setVisible(true);
+            lowTempFDay6.setVisible(false);
+            lowTempCDay6.setVisible(true);
+
             count--;
         }
     }
