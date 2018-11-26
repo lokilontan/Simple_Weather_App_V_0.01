@@ -19,17 +19,17 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Not Implemented Yet!" />
+              <MenuItem mnemonicParsing="false" onAction="#handleMenuButton" text="Not Implemented Yet!" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Not Implemented Yet!" />
+              <MenuItem mnemonicParsing="false" onAction="#handleMenuButton" text="Not Implemented Yet!" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="Not Implemented Yet!" />
+              <MenuItem mnemonicParsing="false" onAction="#handleMenuButton" text="Not Implemented Yet!" />
             </items>
           </Menu>
         </menus>
@@ -56,7 +56,7 @@
          </font>
       </Label>
       <Circle fill="#1f93ff00" layoutX="118.0" layoutY="217.0" radius="100.0" stroke="#feae3c" strokeType="INSIDE" strokeWidth="4.0" />
-      <Label fx:id="con" layoutX="281.0" layoutY="183.0" prefHeight="21.0" prefWidth="100.0" text="con" textAlignment="CENTER" textFill="#655050" visible="false">
+      <Label fx:id="con" layoutX="270.0" layoutY="183.0" prefHeight="21.0" prefWidth="100.0" text="con" textAlignment="CENTER" textFill="#655050" visible="false">
          <font>
             <Font name="Arial" size="15.0" />
          </font>

@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import javax.xml.soap.Text;
+
 
 public class Controller {
 
@@ -34,6 +36,8 @@ public class Controller {
     Label windDir;
     @FXML
     Label humidity;
+    @FXML
+    Label line;
 
     int count = 0;
 
@@ -81,7 +85,7 @@ public class Controller {
             windDir.setVisible(true);
             humidity.setText(CW.getHumidity(CW.CurrentJson));
             humidity.setVisible(true);
-
+            line.setVisible(true);
         }
         catch (NullPointerException npe) {
             CopyRightBox.display("Error", "Didn't catch data during initialization. Try again!");
@@ -113,6 +117,8 @@ public class Controller {
             windDir.setVisible(true);
             humidity.setText(W.getHumidity((W.DynamicJson)));
             humidity.setVisible(true);
+            line.setVisible(true);
+
         }
         catch (NullPointerException nue) {
             CopyRightBox.display("Error", "Something went wrong (NullPointerException). Try again!");
@@ -142,12 +148,16 @@ public class Controller {
             windDir.setVisible(true);
             humidity.setText(CW.getHumidity(CW.CurrentJson));
             humidity.setVisible(true);
+            line.setVisible(true);
+
         }
         catch (NullPointerException npe)
         {   imgView.setVisible(false);
             loc.setVisible(false);
             con.setVisible(false);
             temF.setVisible(false);
+            line.setVisible(false);
+
         }
     }
 
@@ -170,4 +180,10 @@ public class Controller {
     {
         CopyRightBox.display("Copyright", "© AVA Coders, LLC. All Rights Reserved.");
     }
+
+    public void handleMenuButton(ActionEvent e)
+    {
+        CopyRightBox.display("Message", "Will be implemented after receiving the second payment!");
+    }
+
 }
