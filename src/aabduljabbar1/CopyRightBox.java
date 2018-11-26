@@ -14,7 +14,7 @@ public class CopyRightBox {
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
-        window.setMinWidth(300);
+        window.setMinWidth(350);
         window.setHeight(200);
 
         Label label = new Label();

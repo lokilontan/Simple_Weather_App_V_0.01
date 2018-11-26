@@ -3,7 +3,6 @@ package aabduljabbar1;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -26,9 +25,15 @@ public class Controller {
     @FXML
     Label temC;
     @FXML
-    Button copyRight;
+    Label temF1;
+    @FXML
+    Label temC1;
     @FXML
     ListView listCities;
+    @FXML
+    Label windDir;
+    @FXML
+    Label humidity;
 
     int count = 0;
 
@@ -67,10 +72,19 @@ public class Controller {
             temF.setText(CW.getTemperatureF(CW.CurrentJson));
             temF.setVisible(true);
             temC.setText(CW.getTemperatureC(CW.CurrentJson));
-            temC.setVisible(false);
+            temC.setVisible(true);
+            temC1.setText(CW.getTemperatureC(CW.CurrentJson));
+            temC1.setVisible(true);
+            temF1.setText(CW.getTemperatureF(CW.CurrentJson));
+            temF1.setVisible(false);
+            windDir.setText(CW.getWindDir(CW.CurrentJson));
+            windDir.setVisible(true);
+            humidity.setText(CW.getHumidity(CW.CurrentJson));
+            humidity.setVisible(true);
+
         }
         catch (NullPointerException npe) {
-            System.out.println("Didn`t catch data during initialization. Try again!");
+            CopyRightBox.display("Error", "Didn't catch data during initialization. Try again!");
         }
     }
 
@@ -90,10 +104,18 @@ public class Controller {
             temF.setText(W.getTemperatureF(W.DynamicJson));
             temF.setVisible(true);
             temC.setText(W.getTemperatureC(W.DynamicJson));
-            temC.setVisible(false);
+            temC.setVisible(true);
+            temC1.setText(W.getTemperatureC(W.DynamicJson));
+            temC1.setVisible(true);
+            temF1.setText(W.getTemperatureF(W.DynamicJson));
+            temF1.setVisible(false);
+            windDir.setText(W.getWindDir(W.DynamicJson));
+            windDir.setVisible(true);
+            humidity.setText(W.getHumidity((W.DynamicJson)));
+            humidity.setVisible(true);
         }
         catch (NullPointerException nue) {
-            System.out.println("Something went wrong (NullPointerException). Try again!");
+            CopyRightBox.display("Error", "Something went wrong (NullPointerException). Try again!");
         }
     }
 
@@ -111,7 +133,15 @@ public class Controller {
             temF.setText(CW.getTemperatureF(CW.CurrentJson));
             temF.setVisible(true);
             temC.setText(CW.getTemperatureC(CW.CurrentJson));
-            temC.setVisible(false);
+            temC.setVisible(true);
+            temC1.setText(CW.getTemperatureC(CW.CurrentJson));
+            temC1.setVisible(true);
+            temF1.setText(CW.getTemperatureF(CW.CurrentJson));
+            temF1.setVisible(false);
+            windDir.setText(CW.getWindDir(CW.CurrentJson));
+            windDir.setVisible(true);
+            humidity.setText(CW.getHumidity(CW.CurrentJson));
+            humidity.setVisible(true);
         }
         catch (NullPointerException npe)
         {   imgView.setVisible(false);
@@ -124,14 +154,14 @@ public class Controller {
     public void handleTempButton(ActionEvent e)
     {
         if(count == 0){
-            temF.setVisible(false);
-            temC.setVisible(true);
+            temF1.setVisible(true);
+            temC1.setVisible(false);
             count++;
         }
         else
         {
-            temF.setVisible(true);
-            temC.setVisible(false);
+            temF1.setVisible(false);
+            temC1.setVisible(true);
             count--;
         }
     }
