@@ -15,7 +15,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handlePaneClick" prefHeight="520.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aabduljabbar1.Controller">
    <children>
-      <MenuBar layoutX="-77.0" layoutY="1.0" prefHeight="25.0" prefWidth="774.0">
+      <MenuBar layoutX="-1.0" layoutY="1.0" prefHeight="25.0" prefWidth="775.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -143,11 +143,7 @@
          </font>
       </Label>
       <ImageView fx:id="imgViewDay0" fitHeight="49.0" fitWidth="71.0" layoutX="28.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="conDay0" alignment="CENTER" layoutX="4.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay0" visible="false">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
+      <Label fx:id="conDay0" alignment="CENTER" layoutX="4.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay0" visible="false" />
       <Label fx:id="highTempFDay0" alignment="CENTER" layoutX="9.0" layoutY="462.0" prefHeight="30.0" prefWidth="52.0" text="H.T.F" visible="false">
          <font>
             <Font name="System Bold Italic" size="25.0" />
@@ -174,36 +170,12 @@
       <ImageView fx:id="imgViewDay4" fitHeight="49.0" fitWidth="71.0" layoutX="474.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="imgViewDay5" fitHeight="49.0" fitWidth="71.0" layoutX="586.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="imgViewDay6" fitHeight="49.0" fitWidth="71.0" layoutX="694.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="conDay1" alignment="CENTER" layoutX="113.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay1" visible="false">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="conDay2" alignment="CENTER" layoutX="226.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay2" visible="false">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="conDay3" alignment="CENTER" layoutX="338.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay3" visible="false">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="conDay4" alignment="CENTER" layoutX="447.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay4" visible="false">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="conDay5" alignment="CENTER" layoutX="559.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay5" visible="false">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="conDay6" alignment="CENTER" layoutX="667.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay6" visible="false">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
+      <Label fx:id="conDay1" alignment="CENTER" layoutX="113.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay1" visible="false" />
+      <Label fx:id="conDay2" alignment="CENTER" layoutX="226.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay2" visible="false" />
+      <Label fx:id="conDay3" alignment="CENTER" layoutX="338.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay3" visible="false" />
+      <Label fx:id="conDay4" alignment="CENTER" layoutX="447.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay4" visible="false" />
+      <Label fx:id="conDay5" alignment="CENTER" layoutX="559.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay5" visible="false" />
+      <Label fx:id="conDay6" alignment="CENTER" layoutX="667.0" layoutY="439.0" prefHeight="17.0" prefWidth="96.0" text="ConditionsDay6" visible="false" />
       <Label fx:id="highTempFDay1" alignment="CENTER" layoutX="118.0" layoutY="461.0" prefHeight="30.0" prefWidth="52.0" text="H.T.F" visible="false">
          <font>
             <Font name="System Bold Italic" size="25.0" />
