@@ -2,6 +2,11 @@ package aabduljabbar1;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -28,6 +33,46 @@ public class Weather
         else zip = zip.replace(" ", "%20");
     }
 
+    public void getLocationDay(JsonElement j, int dayN, Label dayDate, ImageView dayImgView, Label dayCond,
+                       Label dayHTempF, Label dayLTempF, Label dayHTempC, Label dayLTempC){
+
+        dayDate.setText(j.getAsJsonObject().get("forecast").getAsJsonObject().get("simpleforecast").getAsJsonObject()
+                .get("forecastday").getAsJsonArray().get(dayN).getAsJsonObject().get("date").getAsJsonObject()
+                .get("weekday").getAsString());
+
+        Image dayImgCondition = new Image(j.getAsJsonObject().get("forecast").getAsJsonObject().get("simpleforecast").getAsJsonObject()
+                .get("forecastday").getAsJsonArray().get(dayN).getAsJsonObject().get("icon_url").getAsString());
+
+        dayImgView.setImage(dayImgCondition);
+
+        dayCond.setText(j.getAsJsonObject().get("forecast").getAsJsonObject().get("simpleforecast").getAsJsonObject()
+                .get("forecastday").getAsJsonArray().get(dayN).getAsJsonObject().get("conditions").getAsString());
+
+        dayHTempF.setText(j.getAsJsonObject().get("forecast").getAsJsonObject().get("simpleforecast").getAsJsonObject()
+                .get("forecastday").getAsJsonArray().get(dayN).getAsJsonObject().get("high").getAsJsonObject()
+                .get("fahrenheit").getAsString());
+
+        dayHTempF.setVisible(false);
+
+        dayHTempC.setText(j.getAsJsonObject().get("forecast").getAsJsonObject().get("simpleforecast").getAsJsonObject()
+                .get("forecastday").getAsJsonArray().get(dayN).getAsJsonObject().get("high").getAsJsonObject()
+                .get("celsius").getAsString());
+
+        dayHTempC.setVisible(true);
+
+        dayLTempF.setText(j.getAsJsonObject().get("forecast").getAsJsonObject().get("simpleforecast").getAsJsonObject()
+                .get("forecastday").getAsJsonArray().get(dayN).getAsJsonObject().get("low").getAsJsonObject()
+                .get("fahrenheit").getAsString());
+
+        dayLTempF.setVisible(false);
+
+        dayLTempC.setText(j.getAsJsonObject().get("forecast").getAsJsonObject().get("simpleforecast").getAsJsonObject()
+                .get("forecastday").getAsJsonArray().get(dayN).getAsJsonObject().get("low").getAsJsonObject()
+                .get("celsius").getAsString());
+
+        dayLTempC.setVisible(true);
+
+    }
 
 
     public String getImageString(JsonElement j){

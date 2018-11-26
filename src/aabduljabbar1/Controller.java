@@ -38,6 +38,105 @@ public class Controller {
     Label humidity;
     @FXML
     Label line;
+    @FXML
+    Label day0;
+    @FXML
+    Label day1;
+    @FXML
+    Label day2;
+    @FXML
+    Label day3;
+    @FXML
+    Label day4;
+    @FXML
+    Label day5;
+    @FXML
+    Label day6;
+    @FXML
+    ImageView imgViewDay0;
+    @FXML
+    ImageView imgViewDay1;
+    @FXML
+    ImageView imgViewDay2;
+    @FXML
+    ImageView imgViewDay3;
+    @FXML
+    ImageView imgViewDay4;
+    @FXML
+    ImageView imgViewDay5;
+    @FXML
+    ImageView imgViewDay6;
+    @FXML
+    Label conDay0;
+    @FXML
+    Label conDay1;
+    @FXML
+    Label conDay2;
+    @FXML
+    Label conDay3;
+    @FXML
+    Label conDay4;
+    @FXML
+    Label conDay5;
+    @FXML
+    Label conDay6;
+    @FXML
+    Label highTempFDay0;
+    @FXML
+    Label lowTempFDay0;
+    @FXML
+    Label highTempCDay0;
+    @FXML
+    Label lowTempCDay0;
+    @FXML
+    Label highTempFDay1;
+    @FXML
+    Label lowTempFDay1;
+    @FXML
+    Label highTempCDay1;
+    @FXML
+    Label lowTempCDay1;
+    @FXML
+    Label highTempFDay2;
+    @FXML
+    Label lowTempFDay2;
+    @FXML
+    Label highTempCDay2;
+    @FXML
+    Label lowTempCDay2;
+    @FXML
+    Label highTempFDay3;
+    @FXML
+    Label lowTempFDay3;
+    @FXML
+    Label highTempCDay3;
+    @FXML
+    Label lowTempCDay3;
+    @FXML
+    Label highTempFDay4;
+    @FXML
+    Label lowTempFDay4;
+    @FXML
+    Label highTempCDay4;
+    @FXML
+    Label lowTempCDay4;
+    @FXML
+    Label highTempFDay5;
+    @FXML
+    Label lowTempFDay5;
+    @FXML
+    Label highTempCDay5;
+    @FXML
+    Label lowTempCDay5;
+    @FXML
+    Label highTempFDay6;
+    @FXML
+    Label lowTempFDay6;
+    @FXML
+    Label highTempCDay6;
+    @FXML
+    Label lowTempCDay6;
+
 
     int count = 0;
 
@@ -86,6 +185,38 @@ public class Controller {
             humidity.setText(CW.getHumidity(CW.CurrentJson));
             humidity.setVisible(true);
             line.setVisible(true);
+
+            //FORECAST - here must be a for loop, which loops 7 times and i don`t write this method here 7 times!
+            //SORRY it`s 01:00 AM
+
+            //DAY 1
+            CW.getCurrentDay(CW.CurrentJson, 0, day0, imgViewDay0, conDay0, highTempFDay0,
+                    lowTempFDay0, highTempCDay0, lowTempCDay0);
+
+            //DAY 2
+            CW.getCurrentDay(CW.CurrentJson, 1, day1, imgViewDay1, conDay1, highTempFDay1,
+                    lowTempFDay1, highTempCDay1, lowTempCDay1);
+
+            //DAY 3
+            CW.getCurrentDay(CW.CurrentJson, 2, day2, imgViewDay2, conDay2, highTempFDay2,
+                    lowTempFDay2, highTempCDay2, lowTempCDay2);
+
+            //DAY 4
+            CW.getCurrentDay(CW.CurrentJson, 3, day3, imgViewDay3, conDay3, highTempFDay3,
+                    lowTempFDay3, highTempCDay3, lowTempCDay3);
+
+            //DAY 5
+            CW.getCurrentDay(CW.CurrentJson, 4, day4, imgViewDay4, conDay4, highTempFDay4,
+                    lowTempFDay4, highTempCDay4, lowTempCDay4);
+
+            //DAY 6
+            CW.getCurrentDay(CW.CurrentJson, 5, day5, imgViewDay5, conDay5, highTempFDay5,
+                    lowTempFDay5, highTempCDay5, lowTempCDay5);
+
+            //DAY 7
+            CW.getCurrentDay(CW.CurrentJson, 6, day6, imgViewDay6, conDay6, highTempFDay6,
+                    lowTempFDay6, highTempCDay6, lowTempCDay6);
+
         }
         catch (NullPointerException npe) {
             CopyRightBox.display("Error", "Didn't catch data during initialization. Try again!");
@@ -119,6 +250,35 @@ public class Controller {
             humidity.setVisible(true);
             line.setVisible(true);
 
+            //FORECAST
+
+            //DAY 1
+            W.getLocationDay(W.DynamicJson, 0, day0, imgViewDay0, conDay0, highTempFDay0,
+                    lowTempFDay0, highTempCDay0, lowTempCDay0);
+
+            //DAY 2
+            W.getLocationDay(W.DynamicJson, 1, day1, imgViewDay1, conDay1, highTempFDay1,
+                    lowTempFDay1, highTempCDay1, lowTempCDay1);
+
+            //DAY 3
+            W.getLocationDay(W.DynamicJson, 2, day2, imgViewDay2, conDay2, highTempFDay2,
+                    lowTempFDay2, highTempCDay2, lowTempCDay2);
+
+            //DAY 4
+            W.getLocationDay(W.DynamicJson, 3, day3, imgViewDay3, conDay3, highTempFDay3,
+                    lowTempFDay3, highTempCDay3, lowTempCDay3);
+
+            //DAY 5
+            W.getLocationDay(W.DynamicJson, 4, day4, imgViewDay4, conDay4, highTempFDay4,
+                    lowTempFDay4, highTempCDay4, lowTempCDay4);
+
+            //DAY 6
+            W.getLocationDay(W.DynamicJson, 5, day5, imgViewDay5, conDay5, highTempFDay5,
+                    lowTempFDay5, highTempCDay5, lowTempCDay5);
+
+            //DAY 7
+            W.getLocationDay(W.DynamicJson, 6, day6, imgViewDay6, conDay6, highTempFDay6,
+                    lowTempFDay6, highTempCDay6, lowTempCDay6);
         }
         catch (NullPointerException nue) {
             CopyRightBox.display("Error", "Something went wrong (NullPointerException). Try again!");
