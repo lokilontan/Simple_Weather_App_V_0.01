@@ -15,7 +15,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handlePaneClick" prefHeight="520.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aabduljabbar1.Controller">
    <children>
-      <MenuBar layoutX="-1.0" layoutY="1.0" prefHeight="25.0" prefWidth="775.0">
+      <MenuBar layoutX="-77.0" layoutY="1.0" prefHeight="25.0" prefWidth="774.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
