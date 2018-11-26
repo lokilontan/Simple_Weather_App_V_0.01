@@ -12,7 +12,6 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handlePaneClick" prefHeight="520.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aabduljabbar1.Controller">
    <children>
@@ -67,7 +66,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Text layoutX="118.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="|" visible="false" wrappingWidth="12.0" />
       <Label fx:id="temF" layoutX="125.0" layoutY="149.0" prefHeight="21.0" prefWidth="52.0" text="temF" visible="false">
          <font>
             <Font size="15.0" />
@@ -108,5 +106,6 @@
       <Line endX="79.5" endY="91.5" layoutX="465.0" layoutY="412.0" startX="79.5" startY="-55.0" />
       <Line endX="79.5" endY="91.5" layoutX="577.0" layoutY="412.0" startX="79.5" startY="-55.0" />
       <ListView fx:id="listCities" layoutX="146.0" layoutY="64.0" onMouseClicked="#handleListView" opacity="0.92" prefHeight="68.0" prefWidth="197.0" visible="false" />
+      <Label fx:id="line" layoutX="118.0" layoutY="149.0" prefHeight="17.0" prefWidth="12.0" text="|" visible="false" />
    </children>
 </Pane>
