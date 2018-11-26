@@ -57,7 +57,7 @@ public class CurrentWeather {
     //Method for getting weather for location based on the user`s IP
     public void fetchCurrent()
     {
-        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/q/autoip.json";
+        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/forecast7day/q/autoip.json";
 
         try
         {

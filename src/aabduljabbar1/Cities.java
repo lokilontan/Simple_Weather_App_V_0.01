@@ -53,7 +53,6 @@ public class Cities {
        for (int i = 0; i< a.size()-1; i++) {
            lv.getItems().add(a.get(i).getAsJsonObject().get("name").getAsString());
 
-           //System.out.println(a.get(i).getAsJsonObject().get("name").getAsString());
        }
     }
 

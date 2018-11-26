@@ -76,34 +76,7 @@ public class Weather
 
     public void fetch()
     {
-        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/q/" + zip +".json";
-
-        try
-        {
-            URL wdURL = new URL(wdRequest);
-
-            InputStream is = wdURL.openStream();
-            InputStreamReader isr = new InputStreamReader(is);
-            BufferedReader br = new BufferedReader(isr);
-
-            JsonParser parser = new JsonParser();
-            DynamicJson = parser.parse(br);
-        }
-        catch (java.net.MalformedURLException mue)
-        {
-            System.out.println("URL not valid");
-            System.exit(1);
-        }
-        catch (java.io.IOException ioe)
-        {
-            System.out.println("IO Exception Caught");
-            System.exit(1);
-        }
-    }
-
-    public void fetchCityState(String c, String s)
-    {
-        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/q/"+s+"/"+c+".json";
+        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/forecast7day/q/" + zip +".json";
 
         try
         {
