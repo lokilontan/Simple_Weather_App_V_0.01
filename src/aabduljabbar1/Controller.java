@@ -333,6 +333,35 @@ public class Controller {
             humidity.setVisible(true);
             line.setVisible(true);
 
+            //RETURN OLD FORECAST FOR IP LOCATION
+            //DAY 1
+            CW.getCurrentDay(CW.CurrentJson, 0, day0, imgViewDay0, conDay0, highTempFDay0,
+                    lowTempFDay0, highTempCDay0, lowTempCDay0);
+
+            //DAY 2
+            CW.getCurrentDay(CW.CurrentJson, 1, day1, imgViewDay1, conDay1, highTempFDay1,
+                    lowTempFDay1, highTempCDay1, lowTempCDay1);
+
+            //DAY 3
+            CW.getCurrentDay(CW.CurrentJson, 2, day2, imgViewDay2, conDay2, highTempFDay2,
+                    lowTempFDay2, highTempCDay2, lowTempCDay2);
+
+            //DAY 4
+            CW.getCurrentDay(CW.CurrentJson, 3, day3, imgViewDay3, conDay3, highTempFDay3,
+                    lowTempFDay3, highTempCDay3, lowTempCDay3);
+
+            //DAY 5
+            CW.getCurrentDay(CW.CurrentJson, 4, day4, imgViewDay4, conDay4, highTempFDay4,
+                    lowTempFDay4, highTempCDay4, lowTempCDay4);
+
+            //DAY 6
+            CW.getCurrentDay(CW.CurrentJson, 5, day5, imgViewDay5, conDay5, highTempFDay5,
+                    lowTempFDay5, highTempCDay5, lowTempCDay5);
+
+            //DAY 7
+            CW.getCurrentDay(CW.CurrentJson, 6, day6, imgViewDay6, conDay6, highTempFDay6,
+                    lowTempFDay6, highTempCDay6, lowTempCDay6);
+
         }
         catch (NullPointerException npe)
         {   imgView.setVisible(false);

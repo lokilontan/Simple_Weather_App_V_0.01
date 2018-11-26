@@ -73,6 +73,8 @@ public class CurrentWeather {
         dayCond.setText(j.getAsJsonObject().get("forecast").getAsJsonObject().get("simpleforecast").getAsJsonObject()
                 .get("forecastday").getAsJsonArray().get(dayN).getAsJsonObject().get("conditions").getAsString());
 
+        dayCond.setVisible(true);
+
         dayHTempF.setText(j.getAsJsonObject().get("forecast").getAsJsonObject().get("simpleforecast").getAsJsonObject()
                 .get("forecastday").getAsJsonArray().get(dayN).getAsJsonObject().get("high").getAsJsonObject()
                 .get("fahrenheit").getAsString());
