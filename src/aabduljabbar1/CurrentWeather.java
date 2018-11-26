@@ -14,6 +14,7 @@ import java.net.URL;
 public class CurrentWeather {
 
     public JsonElement CurrentJson; //json for current weather
+    public JsonElement CurrentRSJson;
 
     public String getImageString(JsonElement j){
         return j.getAsJsonObject().get("current_observation").getAsJsonObject()
@@ -95,7 +96,16 @@ public class CurrentWeather {
                 .get("celsius").getAsString());
 
         dayLTempC.setVisible(true);
+    }
 
+    public String getRadarImg(JsonElement j){
+        return j.getAsJsonObject().get("radar").getAsJsonObject()
+                .get("image_url").getAsString();
+    }
+
+    public String getSatImg(JsonElement j){
+        return j.getAsJsonObject().get("satellite").getAsJsonObject()
+                .get("image_url").getAsString();
     }
 
     //Method for getting weather for location based on the user`s IP
@@ -113,6 +123,33 @@ public class CurrentWeather {
 
             JsonParser parser = new JsonParser();
             CurrentJson = parser.parse(br);
+        }
+        catch (java.net.MalformedURLException mue)
+        {
+            System.out.println("URL not valid");
+            System.exit(1);
+        }
+        catch (java.io.IOException ioe)
+        {
+            System.out.println("IO Exception Caught");
+            System.exit(1);
+        }
+    }
+
+    public void fetchCurrentRS()
+    {
+        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/radar/satellite/q/autoip.json";
+
+        try
+        {
+            URL wdURL = new URL(wdRequest);
+
+            InputStream is = wdURL.openStream();
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader br = new BufferedReader(isr);
+
+            JsonParser parser = new JsonParser();
+            CurrentRSJson = parser.parse(br);
         }
         catch (java.net.MalformedURLException mue)
         {

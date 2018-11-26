@@ -9,8 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import javax.xml.soap.Text;
-
 
 public class Controller {
 
@@ -136,6 +134,10 @@ public class Controller {
     Label highTempCDay6;
     @FXML
     Label lowTempCDay6;
+    @FXML
+    ImageView radarImg;
+    @FXML
+    ImageView satImg;
 
 
     int count = 0;
@@ -164,10 +166,20 @@ public class Controller {
     public void initialize(){
 
         CW.fetchCurrent();
+        CW.fetchCurrentRS();
         try {
             Image imgCondition = new Image(CW.getImageString(CW.CurrentJson));
             imgView.setImage(imgCondition);
             imgView.setVisible(true);
+
+            Image imgRadar = new Image(CW.getRadarImg(CW.CurrentRSJson));
+            radarImg.setImage(imgRadar);
+            radarImg.setVisible(true);
+
+            Image imgSat = new Image(CW.getSatImg(CW.CurrentRSJson));
+            satImg.setImage(imgSat);
+            satImg.setVisible(false);
+
             loc.setText(CW.getCityState(CW.CurrentJson));
             loc.setVisible(true);
             con.setText(CW.getWeather(CW.CurrentJson));
@@ -228,10 +240,21 @@ public class Controller {
         Weather W = new Weather(zipField.getText());
 
         W.fetch();
+        W.fetchRS();
         try {
             Image imgCondition = new Image(W.getImageString(W.DynamicJson));
             imgView.setImage(imgCondition);
             imgView.setVisible(true);
+
+            Image imgRadar = new Image(W.getRadarImg(W.RSJson));
+            radarImg.setImage(imgRadar);
+            radarImg.setVisible(true);
+
+            Image imgSat = new Image(W.getSatImg(W.RSJson));
+            satImg.setImage(imgSat);
+            satImg.setVisible(false);
+
+
             loc.setText(W.getCityState(W.DynamicJson));
             loc.setVisible(true);
             con.setText(W.getWeather(W.DynamicJson));
@@ -418,4 +441,15 @@ public class Controller {
         CopyRightBox.display("Message", "Will be implemented after receiving the second payment!");
     }
 
+    public void handleRadarButton(ActionEvent e)
+    {
+        radarImg.setVisible(true);
+        satImg.setVisible(false);
+    }
+
+    public void handleSatelliteButton(ActionEvent e)
+    {
+        radarImg.setVisible(false);
+        satImg.setVisible(true);
+    }
 }
