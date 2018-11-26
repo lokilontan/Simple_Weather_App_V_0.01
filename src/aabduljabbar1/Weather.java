@@ -33,8 +33,9 @@ public class Weather
     public String getImageString(JsonElement j){
         return j.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("icon_url").getAsString();
-
     }
+
+
 
     public String getCityState(JsonElement j)
     {
@@ -61,6 +62,17 @@ public class Weather
                 .get("weather").getAsString();
     }
 
+    public String getWindDir(JsonElement j)
+    {
+        return "Wind " +  j.getAsJsonObject().get("current_observation").getAsJsonObject()
+                .get("wind_dir").getAsString();
+    }
+
+    public String getHumidity(JsonElement j)
+    {
+        return "Humidity " + j.getAsJsonObject().get("current_observation").getAsJsonObject()
+                .get("relative_humidity").getAsString();
+    }
 
     public void fetch()
     {
