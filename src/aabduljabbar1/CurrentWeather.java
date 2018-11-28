@@ -164,5 +164,4 @@ public class CurrentWeather {
             System.exit(1);
         }
     }
-
 }
