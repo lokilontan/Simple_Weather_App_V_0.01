@@ -48,13 +48,13 @@ public class CurrentWeather {
 
     public String getWindDir(JsonElement j)
     {
-        return j.getAsJsonObject().get("current_observation").getAsJsonObject()
+        return "Wind " +  j.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("wind_dir").getAsString();
     }
 
     public String getHumidity(JsonElement j)
     {
-        return j.getAsJsonObject().get("current_observation").getAsJsonObject()
+        return "Humidity " + j.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("relative_humidity").getAsString();
     }
 
@@ -100,23 +100,15 @@ public class CurrentWeather {
         dayLTempC.setVisible(true);
     }
 
-
-    public String getRadarAImg()
-    {
-        return "http://api.wunderground.com/api/1655f919bbcd29ed/animatedradar/q/autoip.gif?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=50";
+    public String getRadarImg(JsonElement j){
+        return j.getAsJsonObject().get("radar").getAsJsonObject()
+                .get("image_url").getAsString();
     }
 
-    public String getSatAImg()
-    {
-        return "http://api.wunderground.com/api/1655f919bbcd29ed/animatedsatellite/q/autoip.gif?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=50";
+    public String getSatImg(JsonElement j){
+        return j.getAsJsonObject().get("satellite").getAsJsonObject()
+                .get("image_url").getAsString();
     }
-
-    public String getRadarImg()
-    {
-        return "http://api.wunderground.com/api/1655f919bbcd29ed/radar/q/autoip.png?newmaps=1&radius=250&width=250&height=250";
-    }
-
-
 
     //Method for getting weather for location based on the user`s IP
     public void fetchCurrent()
@@ -146,10 +138,9 @@ public class CurrentWeather {
         }
     }
 
-
-     /**public void fetchCurrentRS()
+    public void fetchCurrentRS()
     {
-        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/animatedradar/q/autoip.json";
+        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/radar/satellite/q/autoip.json";
 
         try
         {
@@ -173,18 +164,5 @@ public class CurrentWeather {
             System.exit(1);
         }
     }
-
-     public String getRadarImg(JsonElement j)
-     {
-        return j.getAsJsonObject().get("radar").getAsJsonObject()
-             .get("image_url").getAsString();
-     }
-
-     public String getSatImg(JsonElement j)
-     {
-        return j.getAsJsonObject().get("satellite").getAsJsonObject()
-            .get("image_url").getAsString();
-     }
-      */
 
 }
