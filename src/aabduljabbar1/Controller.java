@@ -10,9 +10,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import sierra.AsyncTask;
 
+import java.io.File;
+
 
 public class Controller {
 
+    @FXML
+    ImageView loadImgView;
     @FXML
     TextField zipField;
     @FXML
@@ -166,6 +170,7 @@ public class Controller {
 
     public void initialize(){
 
+
         CW.fetchCurrent();
         CW.fetchCurrentRS();
         try {
@@ -242,8 +247,24 @@ public class Controller {
     public void handleWeatherButton(ActionEvent e)
     {
 
+        Image loading = new Image(Main.class.getResourceAsStream("loading.gif"));
+
+        loadImgView.setImage(loading);
+        loadImgView.setFitWidth(100);
+        loadImgView.setPreserveRatio(true);
+        loadImgView.setSmooth(true);
+        loadImgView.setCache(true);
+        loadImgView.relocate(346, 200);
+        loadImgView.setVisible(true);
+
+
+
+
+
         AsyncTask t = new GetDataInBackground();
         t.execute(zipField.getText());
+
+
 
 
     }
@@ -433,6 +454,8 @@ public class Controller {
                 W.fetch();
                 W.fetchRS();
 
+
+
                 return W;
             }
 
@@ -500,6 +523,8 @@ public class Controller {
                     //DAY 7
                     W.getLocationDay(W.DynamicJson, 6, day6, imgViewDay6, conDay6, highTempFDay6,
                             lowTempFDay6, highTempCDay6, lowTempCDay6);
+
+                    loadImgView.setVisible(false);
                 }
                 catch (NullPointerException nue) {
                     CopyRightBox.display("Error", "Something went wrong (NullPointerException). Try again!");
