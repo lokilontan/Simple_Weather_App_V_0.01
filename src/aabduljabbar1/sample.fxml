@@ -7,7 +7,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
@@ -15,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handlePaneClick" prefHeight="534.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aabduljabbar1.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handlePaneClick" prefHeight="520.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aabduljabbar1.Controller">
    <children>
-      <MenuBar layoutX="-6.0" layoutY="1.0" prefHeight="25.0" prefWidth="772.0">
+      <MenuBar layoutX="-6.0" layoutY="1.0" prefHeight="25.0" prefWidth="774.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -45,19 +44,19 @@
          </font>
       </Label>
       <Button fx:id="clear" layoutX="603.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleClearButton" text="Clear" />
-      <Button layoutX="524.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleTempButton" prefHeight="25.0" prefWidth="43.0" text="C / F" />
-      <Button fx:id="copyRight" layoutX="683.0" layoutY="503.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#handleCopyRightButton" prefHeight="30.0" prefWidth="83.0" text="Copyright" textAlignment="CENTER">
+      <Button layoutX="523.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleTempButton" prefHeight="25.0" prefWidth="43.0" text="C / F" />
+      <Button fx:id="copyRight" layoutX="697.0" layoutY="504.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#handleCopyRightButton" prefHeight="25.0" prefWidth="83.0" text="Copyright" textAlignment="CENTER">
          <font>
             <Font name="Franklin Gothic Medium" size="13.0" />
          </font>
       </Button>
-      <Line endX="439.0" layoutX="326.0" layoutY="76.0" startX="-326.0" />
+      <Line endX="456.5" layoutX="326.0" layoutY="76.0" startX="-326.0" />
       <Label layoutX="18.0" layoutY="40.0" text="Search Locations">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Circle fill="#1f93ff00" layoutX="105.0" layoutY="216.0" radius="100.0" stroke="#feae3c" strokeType="INSIDE" strokeWidth="4.0" />
+      <Circle fill="#1f93ff00" layoutX="118.0" layoutY="217.0" radius="100.0" stroke="#feae3c" strokeType="INSIDE" strokeWidth="4.0" />
       <Label fx:id="con" alignment="CENTER" layoutX="263.0" layoutY="183.0" prefHeight="21.0" prefWidth="100.0" text="con" textAlignment="CENTER" textFill="#655050" visible="false">
          <font>
             <Font name="Arial" size="15.0" />
@@ -73,7 +72,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="temF1" contentDisplay="CENTER" layoutX="43.0" layoutY="183.0" prefHeight="83.0" prefWidth="125.0" text="temF1" textAlignment="CENTER" textFill="#feae3c" visible="false">
+      <Label fx:id="temF1" contentDisplay="CENTER" layoutX="66.0" layoutY="183.0" prefHeight="83.0" prefWidth="125.0" text="temF1" textAlignment="CENTER" textFill="#feae3c" visible="false">
          <font>
             <Font size="40.0" />
          </font>
@@ -88,18 +87,18 @@
             <Font name="Arial" size="15.0" />
          </font>
       </Label>
-      <Line endX="588.0" endY="-0.5" layoutX="177.0" layoutY="357.0" startX="-177.0" startY="-0.5" />
-      <Label fx:id="temC1" contentDisplay="CENTER" layoutX="43.0" layoutY="183.0" prefHeight="83.0" prefWidth="125.0" text="temC1" textAlignment="CENTER" textFill="#feae3c" visible="false">
+      <Line endX="596.5" endY="-0.5" layoutX="177.0" layoutY="357.0" startX="-177.0" startY="-0.5" />
+      <Label fx:id="temC1" contentDisplay="CENTER" layoutX="66.0" layoutY="183.0" prefHeight="83.0" prefWidth="125.0" text="temC1" textAlignment="CENTER" textFill="#feae3c" visible="false">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
       <Line endX="-177.0" endY="-272.5" layoutX="573.0" layoutY="349.0" startX="-177.0" startY="7.0" />
-      <Line endX="257.0" layoutX="508.0" layoutY="118.0" startX="-111.5" />
+      <Line endX="266.5" layoutX="508.0" layoutY="118.0" startX="-111.5" />
       <Button layoutX="407.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleRadarButton" prefHeight="25.0" prefWidth="61.0" text="Radar" />
-      <Button layoutX="503.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleSatelliteButton" prefHeight="25.0" prefWidth="71.0" text="Satellite " />
-      <Line endX="84.0" layoutX="682.0" layoutY="504.0" startX="-682.0" />
-      <Line endX="573.0" endY="-5.0" layoutX="194.0" layoutY="385.0" startX="-194.0" />
+      <Button layoutX="493.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleSatelliteButton" prefHeight="25.0" prefWidth="71.0" text="Satellite " />
+      <Line endX="100.0" layoutX="682.0" layoutY="504.0" startX="-682.0" />
+      <Line endX="577.5" layoutX="194.0" layoutY="385.0" startX="-194.0" />
       <Line endX="79.5" endY="91.5" layoutX="24.0" layoutY="412.0" startX="79.5" startY="-55.0" />
       <Line endX="79.5" endY="91.5" layoutX="138.0" layoutY="412.0" startX="79.5" startY="-55.0" />
       <Line endX="79.5" endY="91.5" layoutX="251.0" layoutY="412.0" startX="79.5" startY="-55.0" />
@@ -112,9 +111,6 @@
          <font>
             <Font size="14.0" />
          </font>
-         <tooltip>
-            <Tooltip text="More Info" textAlignment="CENTER" />
-         </tooltip>
       </Label>
       <Label fx:id="day2" alignment="CENTER" layoutX="218.0" layoutY="360.0" prefHeight="20.0" prefWidth="111.0" text="Day 3" textAlignment="CENTER">
          <font>
@@ -302,6 +298,7 @@
       </Label>
       <ImageView fx:id="radarImg" fitHeight="207.0" fitWidth="270.0" layoutX="408.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true" visible="false" />
       <ImageView fx:id="satImg" fitHeight="207.0" fitWidth="270.0" layoutX="408.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true" visible="false" />
-      <Text layoutX="4.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terms of Use  I  Privacy Policy  I  Accessibility  I  AdChoices  I  About us" />
+      <Text layoutX="4.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terms of Use  I  Privacy Policy  I  Accessibility  I  AdChoices  I  About us" />
+      <ImageView fx:id="loadImgView" fitHeight="418.0" fitWidth="731.0" layoutX="22.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" visible="false" />
    </children>
 </Pane>
