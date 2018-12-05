@@ -1,6 +1,7 @@
 package aabduljabbar1;
 
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -8,10 +9,15 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import sierra.AsyncTask;
+
+
 
 
 public class Controller {
 
+    @FXML
+    ImageView loadImgView;
     @FXML
     TextField zipField;
     @FXML
@@ -140,6 +146,7 @@ public class Controller {
     ImageView animatedSatImg;
     @FXML
     ImageView radarImg;
+
     @FXML
     ImageView humidityIcon;
 
@@ -173,6 +180,7 @@ public class Controller {
     public void initialize(){
 
         CW.fetchCurrent();
+
         try {
             Image imgCondition = new Image(CW.getImageString(CW.CurrentJson));
             imgView.setImage(imgCondition);
@@ -253,80 +261,23 @@ public class Controller {
         }
     }
 
-    public void handleWeatherButton(ActionEvent e)
-    {
-        Weather W = new Weather(zipField.getText());
-        W.fetch();
-        //W.fetchRS();
-        try {
-            Image imgCondition = new Image(W.getImageString(W.DynamicJson));
-            imgView.setImage(imgCondition);
-            imgView.setVisible(true);
+    public void handleWeatherButton(ActionEvent e) {
 
-            Image animatedImgRadar = new Image(W.getRadarAImg());
-            animatedRadarImg.setImage(animatedImgRadar);
-            animatedRadarImg.setVisible(true);
-
-            Image animatedImgSat = new Image(W.getSatAImg());
-            animatedSatImg.setImage(animatedImgSat);
-            animatedSatImg.setVisible(false);
-
-            Image imgRadar = new Image(W.getRadarImg());
-            radarImg.setImage(imgRadar);
-            radarImg.setVisible(true);
+        Image loading = new Image(Main.class.getResourceAsStream("loading.gif"));
 
 
-            loc.setText(W.getCityState(W.DynamicJson));
-            loc.setVisible(true);
-            con.setText(W.getWeather(W.DynamicJson));
-            con.setVisible(true);
-            temF.setText(W.getTemperatureF(W.DynamicJson));
-            temF.setVisible(true);
-            temC.setText(W.getTemperatureC(W.DynamicJson));
-            temC.setVisible(true);
-            temC1.setText(W.getTemperatureC(W.DynamicJson));
-            temC1.setVisible(true);
-            temF1.setText(W.getTemperatureF(W.DynamicJson));
-            temF1.setVisible(false);
-            windDir.setText(W.getWindDir(W.DynamicJson));
-            windDir.setVisible(true);
-            humidity.setText(W.getHumidity((W.DynamicJson)));
-            humidity.setVisible(true);
-            line.setVisible(true);
+        loadImgView.setImage(loading);
+        loadImgView.setFitWidth(100);
+        loadImgView.setPreserveRatio(true);
+        loadImgView.setSmooth(true);
+        loadImgView.setCache(true);
+        loadImgView.relocate(65, 225);
+        loadImgView.setVisible(true);
 
-            //FORECAST
 
-            //DAY 1
-            W.getLocationDay(W.DynamicJson, 0, day0, imgViewDay0, conDay0, highTempFDay0,
-                    lowTempFDay0, highTempCDay0, lowTempCDay0);
+         AsyncTask t = new GetDataInBackground();
+         t.execute(zipField.getText());
 
-            //DAY 2
-            W.getLocationDay(W.DynamicJson, 1, day1, imgViewDay1, conDay1, highTempFDay1,
-                    lowTempFDay1, highTempCDay1, lowTempCDay1);
-
-            //DAY 3
-            W.getLocationDay(W.DynamicJson, 2, day2, imgViewDay2, conDay2, highTempFDay2,
-                    lowTempFDay2, highTempCDay2, lowTempCDay2);
-
-            //DAY 4
-            W.getLocationDay(W.DynamicJson, 3, day3, imgViewDay3, conDay3, highTempFDay3,
-                    lowTempFDay3, highTempCDay3, lowTempCDay3);
-
-            //DAY 5
-            W.getLocationDay(W.DynamicJson, 4, day4, imgViewDay4, conDay4, highTempFDay4,
-                    lowTempFDay4, highTempCDay4, lowTempCDay4);
-
-            //DAY 6
-            W.getLocationDay(W.DynamicJson, 5, day5, imgViewDay5, conDay5, highTempFDay5,
-                    lowTempFDay5, highTempCDay5, lowTempCDay5);
-
-            //DAY 7
-            W.getLocationDay(W.DynamicJson, 6, day6, imgViewDay6, conDay6, highTempFDay6,
-                    lowTempFDay6, highTempCDay6, lowTempCDay6);
-        }
-        catch (NullPointerException nue) {
-            CopyRightBox.display("Error", "Please enter a location!");
-        }
     }
 
     public void handleClearButton(ActionEvent e)
@@ -600,4 +551,100 @@ public class Controller {
         radarImg.setImage(imgRadar);
     }
      */
+
+   private class GetDataInBackground extends AsyncTask<String, Weather>
+
+        {
+
+            public Weather doInBackground(String location)
+            {
+
+                Weather W = new Weather(zipField.getText());
+
+                W.fetch();
+                W.fetchRS();
+
+                return W;
+            }
+
+
+            public void onPostExecute(Weather W)
+            {
+                try {
+                    Image imgCondition = new Image(W.getImageString(W.DynamicJson));
+                    imgView.setImage(imgCondition);
+                    imgView.setVisible(true);
+
+                    Image animatedImgRadar = new Image(W.getRadarAImg());
+                    animatedRadarImg.setImage(animatedImgRadar);
+                    animatedRadarImg.setVisible(true);
+
+                    Image animatedImgSat = new Image(W.getSatAImg());
+                    animatedSatImg.setImage(animatedImgSat);
+                    animatedSatImg.setVisible(false);
+
+                    Image imgRadar = new Image(W.getRadarImg());
+                    radarImg.setImage(imgRadar);
+                    radarImg.setVisible(true);
+
+                    loc.setText(W.getCityState(W.DynamicJson));
+                    loc.setVisible(true);
+                    con.setText(W.getWeather(W.DynamicJson));
+                    con.setVisible(true);
+                    temF.setText(W.getTemperatureF(W.DynamicJson));
+                    temF.setVisible(true);
+                    temC.setText(W.getTemperatureC(W.DynamicJson));
+                    temC.setVisible(true);
+                    temC1.setText(W.getTemperatureC(W.DynamicJson));
+                    temC1.setVisible(true);
+                    temF1.setText(W.getTemperatureF(W.DynamicJson));
+                    temF1.setVisible(false);
+                    windDir.setText(W.getWindDir(W.DynamicJson));
+                    windDir.setVisible(true);
+                    humidity.setText(W.getHumidity((W.DynamicJson)));
+                    humidity.setVisible(true);
+                    line.setVisible(true);
+
+                    //FORECAST
+
+                    //DAY 1
+                    W.getLocationDay(W.DynamicJson, 0, day0, imgViewDay0, conDay0, highTempFDay0,
+                            lowTempFDay0, highTempCDay0, lowTempCDay0);
+
+                    //DAY 2
+                    W.getLocationDay(W.DynamicJson, 1, day1, imgViewDay1, conDay1, highTempFDay1,
+                            lowTempFDay1, highTempCDay1, lowTempCDay1);
+
+                    //DAY 3
+                    W.getLocationDay(W.DynamicJson, 2, day2, imgViewDay2, conDay2, highTempFDay2,
+                            lowTempFDay2, highTempCDay2, lowTempCDay2);
+
+                    //DAY 4
+                    W.getLocationDay(W.DynamicJson, 3, day3, imgViewDay3, conDay3, highTempFDay3,
+                            lowTempFDay3, highTempCDay3, lowTempCDay3);
+
+                    //DAY 5
+                    W.getLocationDay(W.DynamicJson, 4, day4, imgViewDay4, conDay4, highTempFDay4,
+                            lowTempFDay4, highTempCDay4, lowTempCDay4);
+
+                    //DAY 6
+                    W.getLocationDay(W.DynamicJson, 5, day5, imgViewDay5, conDay5, highTempFDay5,
+                            lowTempFDay5, highTempCDay5, lowTempCDay5);
+
+                    //DAY 7
+                    W.getLocationDay(W.DynamicJson, 6, day6, imgViewDay6, conDay6, highTempFDay6,
+                            lowTempFDay6, highTempCDay6, lowTempCDay6);
+
+                    loadImgView.setVisible(false);
+
+                } catch (NullPointerException nue) {
+                    CopyRightBox.display("Error", "Something went wrong (NullPointerException). Try again!");
+                }
+
+
+
+            }
+        }
+
+
 }
