@@ -146,15 +146,18 @@ public class Controller {
     ImageView animatedSatImg;
     @FXML
     ImageView radarImg;
-
     @FXML
     ImageView humidityIcon;
+    @FXML
+    ImageView windIcon;
 
     CurrentWeather CW = new CurrentWeather();
 
 
     int count = 0;
     String newRadar = new String (CW.getRadarImg());
+
+
 
 
 
@@ -203,6 +206,10 @@ public class Controller {
             Image imgHumidity = new Image(Main.class.getResourceAsStream("Humidity.jpg"));
             humidityIcon.setImage(imgHumidity);
             humidityIcon.setVisible(true);
+
+            Image imgWind = new Image(Main.class.getResourceAsStream("wind.png"));
+            windIcon.setImage(imgWind);
+            windIcon.setVisible(true);
 
 
 
@@ -271,7 +278,7 @@ public class Controller {
         loadImgView.setPreserveRatio(true);
         loadImgView.setSmooth(true);
         loadImgView.setCache(true);
-        loadImgView.relocate(65, 225);
+        loadImgView.relocate(-7, 0);
         loadImgView.setVisible(true);
 
 
@@ -283,6 +290,7 @@ public class Controller {
     public void handleClearButton(ActionEvent e)
     {
         zipField.setText("");
+        loadImgView.setVisible(false);
         try {
             Image imgCondition = new Image(CW.getImageString(CW.CurrentJson));
             imgView.setImage(imgCondition);
@@ -482,6 +490,7 @@ public class Controller {
 
     public void handleZoomIn(ActionEvent e)
     {
+
         //Weather W = new Weather(zipField.getText());
         CW.getRadarImg();
         //newRadar = new String (CW.getRadarImg());
@@ -562,7 +571,7 @@ public class Controller {
                 Weather W = new Weather(zipField.getText());
 
                 W.fetch();
-                W.fetchRS();
+
 
                 return W;
             }
@@ -573,6 +582,7 @@ public class Controller {
                 try {
                     Image imgCondition = new Image(W.getImageString(W.DynamicJson));
                     imgView.setImage(imgCondition);
+                    imgView.setFitWidth(100);
                     imgView.setVisible(true);
 
                     Image animatedImgRadar = new Image(W.getRadarAImg());
@@ -638,6 +648,7 @@ public class Controller {
                     loadImgView.setVisible(false);
 
                 } catch (NullPointerException nue) {
+                    loadImgView.setVisible(false);
                     CopyRightBox.display("Error", "Something went wrong (NullPointerException). Try again!");
                 }
 
