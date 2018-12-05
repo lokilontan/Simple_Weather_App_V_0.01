@@ -135,14 +135,21 @@ public class Controller {
     @FXML
     Label lowTempCDay6;
     @FXML
+    ImageView animatedRadarImg;
+    @FXML
+    ImageView animatedSatImg;
+    @FXML
     ImageView radarImg;
     @FXML
-    ImageView satImg;
+    ImageView humidityIcon;
+
+    CurrentWeather CW = new CurrentWeather();
 
 
     int count = 0;
+    String newRadar = new String (CW.getRadarImg());
 
-    CurrentWeather CW = new CurrentWeather();
+
 
 
     public void handleListView() {
@@ -166,19 +173,30 @@ public class Controller {
     public void initialize(){
 
         CW.fetchCurrent();
-        CW.fetchCurrentRS();
         try {
             Image imgCondition = new Image(CW.getImageString(CW.CurrentJson));
             imgView.setImage(imgCondition);
             imgView.setVisible(true);
 
-            Image imgRadar = new Image(CW.getRadarImg(CW.CurrentRSJson));
+            //Image imgRadar = new Image(CW.getRadarImg(CW.CurrentRSJson), 500, 300, true, true);
+            Image animatedImgRadar = new Image(CW.getRadarAImg());
+            animatedRadarImg.setImage(animatedImgRadar);
+            animatedRadarImg.setVisible(true);
+
+            //Image imgSat = new Image(CW.getSatImg(CW.CurrentRSJson));
+            Image animatedImgSat = new Image(CW.getSatAImg());
+            animatedSatImg.setImage(animatedImgSat);
+            animatedSatImg.setVisible(false);
+
+            Image imgRadar = new Image(CW.getRadarImg());
             radarImg.setImage(imgRadar);
             radarImg.setVisible(true);
 
-            Image imgSat = new Image(CW.getSatImg(CW.CurrentRSJson));
-            satImg.setImage(imgSat);
-            satImg.setVisible(false);
+            Image imgHumidity = new Image(Main.class.getResourceAsStream("Humidity.jpg"));
+            humidityIcon.setImage(imgHumidity);
+            humidityIcon.setVisible(true);
+
+
 
             loc.setText(CW.getCityState(CW.CurrentJson));
             loc.setVisible(true);
@@ -238,21 +256,24 @@ public class Controller {
     public void handleWeatherButton(ActionEvent e)
     {
         Weather W = new Weather(zipField.getText());
-
         W.fetch();
-        W.fetchRS();
+        //W.fetchRS();
         try {
             Image imgCondition = new Image(W.getImageString(W.DynamicJson));
             imgView.setImage(imgCondition);
             imgView.setVisible(true);
 
-            Image imgRadar = new Image(W.getRadarImg(W.RSJson));
+            Image animatedImgRadar = new Image(W.getRadarAImg());
+            animatedRadarImg.setImage(animatedImgRadar);
+            animatedRadarImg.setVisible(true);
+
+            Image animatedImgSat = new Image(W.getSatAImg());
+            animatedSatImg.setImage(animatedImgSat);
+            animatedSatImg.setVisible(false);
+
+            Image imgRadar = new Image(W.getRadarImg());
             radarImg.setImage(imgRadar);
             radarImg.setVisible(true);
-
-            Image imgSat = new Image(W.getSatImg(W.RSJson));
-            satImg.setImage(imgSat);
-            satImg.setVisible(false);
 
 
             loc.setText(W.getCityState(W.DynamicJson));
@@ -304,7 +325,7 @@ public class Controller {
                     lowTempFDay6, highTempCDay6, lowTempCDay6);
         }
         catch (NullPointerException nue) {
-            CopyRightBox.display("Error", "Something went wrong (NullPointerException). Try again!");
+            CopyRightBox.display("Error", "Please enter a location!");
         }
     }
 
@@ -364,12 +385,12 @@ public class Controller {
 
         }
         catch (NullPointerException npe)
-        {   imgView.setVisible(false);
+        {
+            imgView.setVisible(false);
             loc.setVisible(false);
             con.setVisible(false);
             temF.setVisible(false);
             line.setVisible(false);
-
         }
     }
 
@@ -472,13 +493,111 @@ public class Controller {
 
     public void handleRadarButton(ActionEvent e)
     {
-        radarImg.setVisible(true);
-        satImg.setVisible(false);
+        animatedRadarImg.setVisible(true);
+        animatedSatImg.setVisible(false);
     }
 
     public void handleSatelliteButton(ActionEvent e)
     {
-        radarImg.setVisible(false);
-        satImg.setVisible(true);
+        animatedRadarImg.setVisible(false);
+        animatedSatImg.setVisible(true);
     }
+
+    public void handleZoomOut(ActionEvent e)
+    {
+        //Weather W = new Weather(zipField.getText());
+        CW.getRadarImg();
+        //newRadar = new String (CW.getRadarImg());
+        int result = Integer.parseInt(newRadar.substring(85,88));
+        System.out.println(newRadar.substring(85,88));
+        result = result+10;
+        System.out.println(result);
+        String[] parts = newRadar.split("radius=");
+        String part1 = parts[0]; // 004
+        String part2 = parts[1].substring(3);
+        newRadar = part1 + "radius=" +   result +   part2;
+        System.out.println(newRadar.substring(85,88));
+        Image imgRadar = new Image(newRadar);
+        radarImg.setImage(imgRadar);
+
+        System.out.println(newRadar.substring(85,88));
+        System.out.println(newRadar);
+        System.out.println(part1);
+        System.out.println(part2);
+        System.out.println(newRadar);
+        System.out.println("-------------------------------------------");
+
+    }
+
+    public void handleZoomIn(ActionEvent e)
+    {
+        //Weather W = new Weather(zipField.getText());
+        CW.getRadarImg();
+        //newRadar = new String (CW.getRadarImg());
+        int result = Integer.parseInt(newRadar.substring(85,88));
+        System.out.println(newRadar.substring(85,88));
+        result = result-10;
+        System.out.println(result);
+        String[] parts = newRadar.split("radius=");
+        String part1 = parts[0]; // 004
+        String part2 = parts[1].substring(3);
+        newRadar = part1 + "radius=" +   result +   part2;
+        System.out.println(newRadar.substring(85,88));
+        Image imgRadar = new Image(newRadar);
+        radarImg.setImage(imgRadar);
+
+        System.out.println(newRadar.substring(85,88));
+        System.out.println(newRadar);
+        System.out.println(part1);
+        System.out.println(part2);
+        System.out.println(newRadar);
+        System.out.println("-------------------------------------------");
+
+    }
+
+
+    /**
+    public void handleZoomOut(ActionEvent e)
+    {
+
+
+
+        CW.fetchCurrentRS();
+        //int fixedSize = 75;
+        //zoomOut = fixedSize + 10;
+        String radar = new String (CW.getRadarImg(CW.CurrentRSJson));
+        String[] parts = radar.split("radius=");
+        String part1 = parts[0]; // 004
+        String part2 = parts[1].substring(2);
+        zoom = zoom+10;
+        newRadar = part1 + "radius=" +   zoom +   part2;
+        Image imgRadar = new Image(newRadar);
+        radarImg.setImage(imgRadar);
+
+
+
+
+        System.out.println(radar);
+        System.out.println(part1);
+        System.out.println(part2);
+        System.out.println(newRadar);
+        System.out.println("-------------------------------------------");
+    }
+
+    public void handleZoomIn(ActionEvent e)
+    {
+        W = new Weather(zipField.getText());
+        W.f
+        //int fixedSize = 75;
+        //zoomOut = fixedSize + 10;
+        String radar = new String (CW.getRadarImg(CW.CurrentRSJson));
+        String[] parts = radar.split("radius=");
+        String part1 = parts[0]; // 004
+        String part2 = parts[1].substring(2);
+        zoom = zoom-10;
+        newRadar = part1 + "radius=" +   zoom +   part2;
+        Image imgRadar = new Image(newRadar);
+        radarImg.setImage(imgRadar);
+    }
+     */
 }

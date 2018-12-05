@@ -16,7 +16,7 @@ import java.net.URL;
 public class Weather {
     private String zip, city, state;
     public JsonElement DynamicJson; //json for any weather call
-    public JsonElement RSJson;
+    //public JsonElement RSJson;
 
 
     public Weather(String zipCode) {
@@ -105,24 +105,30 @@ public class Weather {
     }
 
     public String getWindDir(JsonElement j) {
-        return "Wind " + j.getAsJsonObject().get("current_observation").getAsJsonObject()
+        return j.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("wind_dir").getAsString();
     }
 
     public String getHumidity(JsonElement j) {
-        return "Humidity " + j.getAsJsonObject().get("current_observation").getAsJsonObject()
+        return j.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("relative_humidity").getAsString();
     }
 
-    public String getRadarImg(JsonElement j) {
-        return j.getAsJsonObject().get("radar").getAsJsonObject()
-                .get("image_url").getAsString();
+    public String getRadarAImg()
+    {
+        return "http://api.wunderground.com/api/1655f919bbcd29ed/animatedradar/q/" + zip + ".gif?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=50";
     }
 
-    public String getSatImg(JsonElement j){
-        return j.getAsJsonObject().get("satellite").getAsJsonObject()
-                .get("image_url").getAsString();
+    public String getSatAImg()
+    {
+        return "http://api.wunderground.com/api/1655f919bbcd29ed/animatedsatellite/q/" + zip + ".gif?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=50";
     }
+
+    public String getRadarImg()
+    {
+        return "http://api.wunderground.com/api/1655f919bbcd29ed/radar/q/" + zip + ".png?newmaps=1&radius=250&width=200&height=200";
+    }
+
 
     public void fetch() {
         String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/forecast7day/q/" + zip + ".json";
@@ -145,8 +151,9 @@ public class Weather {
         }
     }
 
-    public void fetchRS() {
-        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/radar/satellite/q/" + zip + ".json";
+    /**
+        public void fetchRS() {
+        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/animatedradar/q/" + zip + ".gif?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=50";
 
         try {
             URL wdURL = new URL(wdRequest);
@@ -165,4 +172,16 @@ public class Weather {
             System.exit(1);
         }
     }
+
+     public String getRadarImg(JsonElement j) {
+     return j.getAsJsonObject().get("radar").getAsJsonObject()
+     .get("image_url").getAsString();
+     }
+
+     public String getSatImg(JsonElement j){
+     return j.getAsJsonObject().get("satellite").getAsJsonObject()
+     .get("image_url").getAsString();
+     }
+
+    */
 }

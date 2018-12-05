@@ -16,7 +16,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.png")));
         primaryStage.setTitle("Simple Weather App V.03");
-        primaryStage.setScene(new Scene(root, 765, 520));
+        primaryStage.setScene(new Scene(root, 950, 520));
         primaryStage.show();
         primaryStage.setResizable(false);
     }
