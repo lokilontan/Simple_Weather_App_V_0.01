@@ -54,12 +54,12 @@
          </font>
       </Button>
       <Line endX="439.0" layoutX="326.0" layoutY="76.0" startX="-326.0" />
-      <Label layoutX="82.0" layoutY="40.0" text="Search Locations">
+      <Label layoutX="89.0" layoutY="40.0" text="Search Locations">
          <font>
-            <Font size="15.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label fx:id="loc" alignment="CENTER" contentDisplay="CENTER" layoutX="-7.0" layoutY="85.0" prefHeight="30.0" prefWidth="338.0" text="loc" textAlignment="CENTER" textFill="#655050">
+      <Label fx:id="loc" alignment="CENTER" contentDisplay="CENTER" layoutX="-6.0" layoutY="85.0" prefHeight="30.0" prefWidth="338.0" text="loc" textAlignment="CENTER" textFill="#655050">
          <font>
             <Font size="18.0" />
          </font>
@@ -84,12 +84,12 @@
       <Label fx:id="line" alignment="CENTER" layoutX="158.0" layoutY="145.0" prefHeight="17.0" prefWidth="12.0" text="|" />
       <Label fx:id="temC1" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="200.0" prefHeight="83.0" prefWidth="170.0" text="temC1" textAlignment="CENTER" textFill="#feae3c">
          <font>
-            <Font size="50.0" />
+            <Font size="40.0" />
          </font>
       </Label>
       <Label fx:id="temF1" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="200.0" prefHeight="83.0" prefWidth="170.0" text="temF1" textAlignment="CENTER" textFill="#feae3c">
          <font>
-            <Font size="50.0" />
+            <Font size="40.0" />
          </font>
       </Label>
       <Label fx:id="windDir" alignment="CENTER" contentDisplay="CENTER" layoutX="163.0" layoutY="182.0" prefHeight="36.0" prefWidth="111.0" text="windDir" textAlignment="CENTER" textFill="#655050">
@@ -333,7 +333,7 @@
          </font></Button>
       <Text layoutX="4.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terms of Use  I  Privacy Policy  I  Accessibility  I  AdChoices  I  About us" />
       <ImageView fx:id="loadImgView" fitHeight="418.0" fitWidth="731.0" layoutX="22.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" visible="false" />
-      <ListView fx:id="listCities" layoutX="146.0" layoutY="64.0" onMouseClicked="#handleListView" opacity="0.92" prefHeight="134.0" prefWidth="197.0" visible="false" />
-      <ImageView fx:id="windIcon" fitHeight="25.0" fitWidth="25.0" layoutX="177.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true" />
+      <ListView fx:id="listCities" layoutX="198.0" layoutY="64.0" onMouseClicked="#handleListView" opacity="0.92" prefHeight="134.0" prefWidth="197.0" visible="false" />
+      <ImageView fx:id="windIcon" fitHeight="25.0" fitWidth="25.0" layoutX="176.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

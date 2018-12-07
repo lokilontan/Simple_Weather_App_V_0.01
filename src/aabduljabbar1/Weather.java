@@ -16,7 +16,10 @@ import java.net.URL;
 public class Weather {
     private String zip, city, state;
     public JsonElement DynamicJson; //json for any weather call
-    //public JsonElement RSJson;
+    public Image imgCondition;
+    public Image animatedImgRadar;
+    public Image animatedImgSat;
+    public Image imgRadar;
 
 
     public Weather(String zipCode) {
@@ -142,6 +145,13 @@ public class Weather {
 
             JsonParser parser = new JsonParser();
             DynamicJson = parser.parse(br);
+
+            //Getting the images
+            imgCondition = new Image(getImageString(DynamicJson));
+            animatedImgRadar = new Image(getRadarAImg());
+            animatedImgSat = new Image(getSatAImg());
+            imgRadar = new Image(getRadarImg());
+
         } catch (java.net.MalformedURLException mue) {
             System.out.println("URL not valid");
             System.exit(1);

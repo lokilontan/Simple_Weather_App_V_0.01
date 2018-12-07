@@ -51,6 +51,9 @@ public class Cities {
     public void collectCities(ListView lv) {
        a = json.getAsJsonObject().get("RESULTS").getAsJsonArray();
        for (int i = 0; i< a.size()-1; i++) {
+           if (a.size() == 0) lv.setVisible(false); else
+               if (a.size() >= 10) lv.setMaxHeight(20*13);
+                       else lv.setMaxHeight(a.size()*13);
            lv.getItems().add(a.get(i).getAsJsonObject().get("name").getAsString());
 
        }

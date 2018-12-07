@@ -292,6 +292,18 @@ public class Controller {
         zipField.setText("");
         loadImgView.setVisible(false);
         try {
+            Image animatedImgRadar = new Image(CW.getRadarAImg());
+            animatedRadarImg.setImage(animatedImgRadar);
+            animatedRadarImg.setVisible(true);
+
+            Image animatedImgSat = new Image(CW.getSatAImg());
+            animatedSatImg.setImage(animatedImgSat);
+            animatedSatImg.setVisible(false);
+
+            Image imgRadar = new Image(CW.getRadarImg());
+            radarImg.setImage(imgRadar);
+            radarImg.setVisible(true);
+
             Image imgCondition = new Image(CW.getImageString(CW.CurrentJson));
             imgView.setImage(imgCondition);
             imgView.setVisible(true);
@@ -572,29 +584,28 @@ public class Controller {
 
                 W.fetch();
 
-
                 return W;
             }
+
 
 
             public void onPostExecute(Weather W)
             {
                 try {
-                    Image imgCondition = new Image(W.getImageString(W.DynamicJson));
-                    imgView.setImage(imgCondition);
+
+                    imgView.setImage(W.imgCondition);
                     imgView.setFitWidth(100);
                     imgView.setVisible(true);
 
-                    Image animatedImgRadar = new Image(W.getRadarAImg());
-                    animatedRadarImg.setImage(animatedImgRadar);
+
+                    animatedRadarImg.setImage(W.animatedImgRadar);
                     animatedRadarImg.setVisible(true);
 
-                    Image animatedImgSat = new Image(W.getSatAImg());
-                    animatedSatImg.setImage(animatedImgSat);
+
+                    animatedSatImg.setImage(W.animatedImgSat);
                     animatedSatImg.setVisible(false);
 
-                    Image imgRadar = new Image(W.getRadarImg());
-                    radarImg.setImage(imgRadar);
+                    radarImg.setImage(W.imgRadar);
                     radarImg.setVisible(true);
 
                     loc.setText(W.getCityState(W.DynamicJson));
