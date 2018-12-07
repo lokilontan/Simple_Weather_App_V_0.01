@@ -155,7 +155,9 @@ public class Controller {
 
 
     int count = 0;
-    String newRadar = new String (CW.getRadarImg());
+    String newRadar = CW.getRadarImg();
+    String dynamicRadar;
+
 
 
 
@@ -189,12 +191,10 @@ public class Controller {
             imgView.setImage(imgCondition);
             imgView.setVisible(true);
 
-            //Image imgRadar = new Image(CW.getRadarImg(CW.CurrentRSJson), 500, 300, true, true);
             Image animatedImgRadar = new Image(CW.getRadarAImg());
             animatedRadarImg.setImage(animatedImgRadar);
             animatedRadarImg.setVisible(true);
 
-            //Image imgSat = new Image(CW.getSatImg(CW.CurrentRSJson));
             Image animatedImgSat = new Image(CW.getSatAImg());
             animatedSatImg.setImage(animatedImgSat);
             animatedSatImg.setVisible(false);
@@ -290,6 +290,7 @@ public class Controller {
     public void handleClearButton(ActionEvent e)
     {
         zipField.setText("");
+        listCities.setVisible(false);
         loadImgView.setVisible(false);
         try {
             Image animatedImgRadar = new Image(CW.getRadarAImg());
@@ -474,56 +475,40 @@ public class Controller {
         animatedSatImg.setVisible(true);
     }
 
+   /* public String whichRadar(){
+
+        if (loc.getText().equals(CW.getCityState(CW.CurrentJson))) return CW.getRadarImg();
+        else return dynamicRadar;
+    }*/
+
     public void handleZoomOut(ActionEvent e)
     {
-        //Weather W = new Weather(zipField.getText());
-        CW.getRadarImg();
-        //newRadar = new String (CW.getRadarImg());
+        //newRadar = whichRadar();
+
         int result = Integer.parseInt(newRadar.substring(85,88));
-        System.out.println(newRadar.substring(85,88));
         result = result+10;
-        System.out.println(result);
         String[] parts = newRadar.split("radius=");
         String part1 = parts[0]; // 004
         String part2 = parts[1].substring(3);
         newRadar = part1 + "radius=" +   result +   part2;
-        System.out.println(newRadar.substring(85,88));
         Image imgRadar = new Image(newRadar);
         radarImg.setImage(imgRadar);
 
-        System.out.println(newRadar.substring(85,88));
-        System.out.println(newRadar);
-        System.out.println(part1);
-        System.out.println(part2);
-        System.out.println(newRadar);
-        System.out.println("-------------------------------------------");
 
     }
 
     public void handleZoomIn(ActionEvent e)
     {
+        //newRadar = whichRadar();
 
-        //Weather W = new Weather(zipField.getText());
-        CW.getRadarImg();
-        //newRadar = new String (CW.getRadarImg());
         int result = Integer.parseInt(newRadar.substring(85,88));
-        System.out.println(newRadar.substring(85,88));
         result = result-10;
-        System.out.println(result);
         String[] parts = newRadar.split("radius=");
         String part1 = parts[0]; // 004
         String part2 = parts[1].substring(3);
         newRadar = part1 + "radius=" +   result +   part2;
-        System.out.println(newRadar.substring(85,88));
         Image imgRadar = new Image(newRadar);
         radarImg.setImage(imgRadar);
-
-        System.out.println(newRadar.substring(85,88));
-        System.out.println(newRadar);
-        System.out.println(part1);
-        System.out.println(part2);
-        System.out.println(newRadar);
-        System.out.println("-------------------------------------------");
 
     }
 
@@ -592,6 +577,7 @@ public class Controller {
             public void onPostExecute(Weather W)
             {
                 try {
+                    dynamicRadar = W.getRadarImg();
 
                     imgView.setImage(W.imgCondition);
                     imgView.setFitWidth(100);
