@@ -492,9 +492,6 @@ public class Controller {
         if (newRadar.length() == 107)
         {
             int result = Integer.parseInt(newRadar.substring(85, 86));
-            System.out.println(newRadar);
-
-            System.out.println(newRadar.substring(85, 88));
             result = result + 10;
             String[] parts = newRadar.split("radius=");
             String part1 = parts[0]; // 004
@@ -505,9 +502,6 @@ public class Controller {
         }
         else if(newRadar.length() >= 109) {
             int result = Integer.parseInt(newRadar.substring(85, 88));
-            System.out.println(newRadar);
-
-            System.out.println(newRadar.substring(85, 88));
             result = result + 10;
             String[] parts = newRadar.split("radius=");
             String part1 = parts[0]; // 004
@@ -519,9 +513,6 @@ public class Controller {
         else
         {
             int result = Integer.parseInt(newRadar.substring(85, 87));
-            System.out.println(newRadar);
-
-            System.out.println(newRadar.substring(85, 88));
             result = result + 10;
             String[] parts = newRadar.split("radius=");
             String part1 = parts[0]; // 004
@@ -529,10 +520,6 @@ public class Controller {
             newRadar = part1 + "radius=" + result + part2;
             Image imgRadar = new Image(newRadar);
             radarImg.setImage(imgRadar);
-
-            System.out.println(newRadar);
-            System.out.println("-------------------------------------");
-
         }
 
 
