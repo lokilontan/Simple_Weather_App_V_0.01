@@ -521,8 +521,6 @@ public class Controller {
             Image imgRadar = new Image(newRadar);
             radarImg.setImage(imgRadar);
         }
-
-
     }
 
     public void handleZoomIn(ActionEvent e)
@@ -534,9 +532,6 @@ public class Controller {
         }
         else if(newRadar.length() >= 109) {
             int result = Integer.parseInt(newRadar.substring(85, 88));
-            System.out.println(newRadar);
-
-            System.out.println(newRadar.substring(85, 88));
             result = result - 10;
             String[] parts = newRadar.split("radius=");
             String part1 = parts[0]; // 004
@@ -548,9 +543,6 @@ public class Controller {
         else
         {
             int result = Integer.parseInt(newRadar.substring(85, 87));
-            System.out.println(newRadar);
-
-            System.out.println(newRadar.substring(85, 88));
             result = result - 10;
             String[] parts = newRadar.split("radius=");
             String part1 = parts[0]; // 004
@@ -558,12 +550,7 @@ public class Controller {
             newRadar = part1 + "radius=" + result + part2;
             Image imgRadar = new Image(newRadar);
             radarImg.setImage(imgRadar);
-
-            System.out.println(newRadar);
-            System.out.println("-------------------------------------");
-
         }
-
     }
 
 
@@ -658,11 +645,6 @@ public class Controller {
                     loadImgView.setVisible(false);
                     CopyRightBox.display("Error", "Something went wrong (NullPointerException). Try again!");
                 }
-
-
-
             }
         }
-
-
 }
