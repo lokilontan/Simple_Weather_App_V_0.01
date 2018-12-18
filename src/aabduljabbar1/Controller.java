@@ -156,7 +156,8 @@ public class Controller {
 
     int count = 0;
     String newRadar = CW.getRadarImg();
-    String dynamicRadar;
+    //String newRadar2 = W.getRadarImg();
+    String dynamicRadar ;
 
 
 
@@ -457,6 +458,99 @@ public class Controller {
         }
     }
 
+    private class GetDataInBackground extends AsyncTask<String, Weather>
+
+    {
+
+        public Weather doInBackground(String location)
+        {
+
+            Weather W = new Weather(zipField.getText());
+
+            W.fetch();
+
+            return W;
+        }
+
+
+
+        public void onPostExecute(Weather W)
+        {
+            try {
+                dynamicRadar = W.getRadarImg();
+
+                imgView.setImage(W.imgCondition);
+                imgView.setFitWidth(100);
+                imgView.setVisible(true);
+
+
+                animatedRadarImg.setImage(W.animatedImgRadar);
+                animatedRadarImg.setVisible(true);
+
+
+                animatedSatImg.setImage(W.animatedImgSat);
+                animatedSatImg.setVisible(false);
+
+                radarImg.setImage(W.imgRadar);
+                radarImg.setVisible(true);
+
+                loc.setText(W.getCityState(W.DynamicJson));
+                loc.setVisible(true);
+                con.setText(W.getWeather(W.DynamicJson));
+                con.setVisible(true);
+                temF.setText(W.getTemperatureF(W.DynamicJson));
+                temF.setVisible(true);
+                temC.setText(W.getTemperatureC(W.DynamicJson));
+                temC.setVisible(true);
+                temC1.setText(W.getTemperatureC(W.DynamicJson));
+                temC1.setVisible(true);
+                temF1.setText(W.getTemperatureF(W.DynamicJson));
+                temF1.setVisible(false);
+                windDir.setText(W.getWindDir(W.DynamicJson));
+                windDir.setVisible(true);
+                humidity.setText(W.getHumidity((W.DynamicJson)));
+                humidity.setVisible(true);
+                line.setVisible(true);
+
+                //FORECAST
+
+                //DAY 1
+                W.getLocationDay(W.DynamicJson, 0, day0, imgViewDay0, conDay0, highTempFDay0,
+                        lowTempFDay0, highTempCDay0, lowTempCDay0);
+
+                //DAY 2
+                W.getLocationDay(W.DynamicJson, 1, day1, imgViewDay1, conDay1, highTempFDay1,
+                        lowTempFDay1, highTempCDay1, lowTempCDay1);
+
+                //DAY 3
+                W.getLocationDay(W.DynamicJson, 2, day2, imgViewDay2, conDay2, highTempFDay2,
+                        lowTempFDay2, highTempCDay2, lowTempCDay2);
+
+                //DAY 4
+                W.getLocationDay(W.DynamicJson, 3, day3, imgViewDay3, conDay3, highTempFDay3,
+                        lowTempFDay3, highTempCDay3, lowTempCDay3);
+
+                //DAY 5
+                W.getLocationDay(W.DynamicJson, 4, day4, imgViewDay4, conDay4, highTempFDay4,
+                        lowTempFDay4, highTempCDay4, lowTempCDay4);
+
+                //DAY 6
+                W.getLocationDay(W.DynamicJson, 5, day5, imgViewDay5, conDay5, highTempFDay5,
+                        lowTempFDay5, highTempCDay5, lowTempCDay5);
+
+                //DAY 7
+                W.getLocationDay(W.DynamicJson, 6, day6, imgViewDay6, conDay6, highTempFDay6,
+                        lowTempFDay6, highTempCDay6, lowTempCDay6);
+
+                loadImgView.setVisible(false);
+
+            } catch (NullPointerException nue) {
+                loadImgView.setVisible(false);
+                CopyRightBox.display("Error", "Something went wrong (NullPointerException). Try again!");
+            }
+        }
+    }
+
     public void handleCopyRightButton(ActionEvent e)
     {
         CopyRightBox.display("Copyright", "© AVA Coders, LLC. All Rights Reserved.");
@@ -479,22 +573,22 @@ public class Controller {
         animatedSatImg.setVisible(true);
     }
 
-   public String whichRadar(){
+   public String whichRadar(String radarUrl){
 
         if (loc.getText().equals(CW.getCityState(CW.CurrentJson))) return CW.getRadarImg();
-        else return dynamicRadar;
+        else return CW.getRadarImg();
     }
 
     public void handleZoomOut(ActionEvent e)
     {
-        //newRadar = whichRadar();
+         whichRadar(newRadar);
 
         if (newRadar.length() == 107)
         {
             int result = Integer.parseInt(newRadar.substring(85, 86));
             result = result + 10;
             String[] parts = newRadar.split("radius=");
-            String part1 = parts[0]; // 004
+            String part1 = parts[0];
             String part2 = parts[1].substring(1);
             newRadar = part1 + "radius=" + result + part2;
             Image imgRadar = new Image(newRadar);
@@ -504,7 +598,7 @@ public class Controller {
             int result = Integer.parseInt(newRadar.substring(85, 88));
             result = result + 10;
             String[] parts = newRadar.split("radius=");
-            String part1 = parts[0]; // 004
+            String part1 = parts[0];
             String part2 = parts[1].substring(3);
             newRadar = part1 + "radius=" + result + part2;
             Image imgRadar = new Image(newRadar);
@@ -515,7 +609,7 @@ public class Controller {
             int result = Integer.parseInt(newRadar.substring(85, 87));
             result = result + 10;
             String[] parts = newRadar.split("radius=");
-            String part1 = parts[0]; // 004
+            String part1 = parts[0];
             String part2 = parts[1].substring(2);
             newRadar = part1 + "radius=" + result + part2;
             Image imgRadar = new Image(newRadar);
@@ -534,7 +628,7 @@ public class Controller {
             int result = Integer.parseInt(newRadar.substring(85, 88));
             result = result - 10;
             String[] parts = newRadar.split("radius=");
-            String part1 = parts[0]; // 004
+            String part1 = parts[0];
             String part2 = parts[1].substring(3);
             newRadar = part1 + "radius=" + result + part2;
             Image imgRadar = new Image(newRadar);
@@ -545,106 +639,11 @@ public class Controller {
             int result = Integer.parseInt(newRadar.substring(85, 87));
             result = result - 10;
             String[] parts = newRadar.split("radius=");
-            String part1 = parts[0]; // 004
+            String part1 = parts[0];
             String part2 = parts[1].substring(2);
             newRadar = part1 + "radius=" + result + part2;
             Image imgRadar = new Image(newRadar);
             radarImg.setImage(imgRadar);
         }
     }
-
-
-
-   private class GetDataInBackground extends AsyncTask<String, Weather>
-
-        {
-
-            public Weather doInBackground(String location)
-            {
-
-                Weather W = new Weather(zipField.getText());
-
-                W.fetch();
-
-                return W;
-            }
-
-
-
-            public void onPostExecute(Weather W)
-            {
-                try {
-                    dynamicRadar = W.getRadarImg();
-
-                    imgView.setImage(W.imgCondition);
-                    imgView.setFitWidth(100);
-                    imgView.setVisible(true);
-
-
-                    animatedRadarImg.setImage(W.animatedImgRadar);
-                    animatedRadarImg.setVisible(true);
-
-
-                    animatedSatImg.setImage(W.animatedImgSat);
-                    animatedSatImg.setVisible(false);
-
-                    radarImg.setImage(W.imgRadar);
-                    radarImg.setVisible(true);
-
-                    loc.setText(W.getCityState(W.DynamicJson));
-                    loc.setVisible(true);
-                    con.setText(W.getWeather(W.DynamicJson));
-                    con.setVisible(true);
-                    temF.setText(W.getTemperatureF(W.DynamicJson));
-                    temF.setVisible(true);
-                    temC.setText(W.getTemperatureC(W.DynamicJson));
-                    temC.setVisible(true);
-                    temC1.setText(W.getTemperatureC(W.DynamicJson));
-                    temC1.setVisible(true);
-                    temF1.setText(W.getTemperatureF(W.DynamicJson));
-                    temF1.setVisible(false);
-                    windDir.setText(W.getWindDir(W.DynamicJson));
-                    windDir.setVisible(true);
-                    humidity.setText(W.getHumidity((W.DynamicJson)));
-                    humidity.setVisible(true);
-                    line.setVisible(true);
-
-                    //FORECAST
-
-                    //DAY 1
-                    W.getLocationDay(W.DynamicJson, 0, day0, imgViewDay0, conDay0, highTempFDay0,
-                            lowTempFDay0, highTempCDay0, lowTempCDay0);
-
-                    //DAY 2
-                    W.getLocationDay(W.DynamicJson, 1, day1, imgViewDay1, conDay1, highTempFDay1,
-                            lowTempFDay1, highTempCDay1, lowTempCDay1);
-
-                    //DAY 3
-                    W.getLocationDay(W.DynamicJson, 2, day2, imgViewDay2, conDay2, highTempFDay2,
-                            lowTempFDay2, highTempCDay2, lowTempCDay2);
-
-                    //DAY 4
-                    W.getLocationDay(W.DynamicJson, 3, day3, imgViewDay3, conDay3, highTempFDay3,
-                            lowTempFDay3, highTempCDay3, lowTempCDay3);
-
-                    //DAY 5
-                    W.getLocationDay(W.DynamicJson, 4, day4, imgViewDay4, conDay4, highTempFDay4,
-                            lowTempFDay4, highTempCDay4, lowTempCDay4);
-
-                    //DAY 6
-                    W.getLocationDay(W.DynamicJson, 5, day5, imgViewDay5, conDay5, highTempFDay5,
-                            lowTempFDay5, highTempCDay5, lowTempCDay5);
-
-                    //DAY 7
-                    W.getLocationDay(W.DynamicJson, 6, day6, imgViewDay6, conDay6, highTempFDay6,
-                            lowTempFDay6, highTempCDay6, lowTempCDay6);
-
-                    loadImgView.setVisible(false);
-
-                } catch (NullPointerException nue) {
-                    loadImgView.setVisible(false);
-                    CopyRightBox.display("Error", "Something went wrong (NullPointerException). Try again!");
-                }
-            }
-        }
 }
