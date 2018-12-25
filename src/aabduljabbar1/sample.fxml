@@ -92,12 +92,12 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <Label fx:id="windDir" alignment="CENTER" contentDisplay="CENTER" layoutX="163.0" layoutY="182.0" prefHeight="36.0" prefWidth="111.0" text="windDir" textAlignment="CENTER" textFill="#655050">
+      <Label fx:id="windDir" alignment="CENTER" contentDisplay="CENTER" layoutX="266.0" layoutY="323.0" prefHeight="36.0" prefWidth="63.0" text="windDir" textAlignment="CENTER" textFill="#655050">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="humidity" alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="183.0" prefHeight="36.0" prefWidth="111.0" text="humidity" textAlignment="CENTER" textFill="#655050">
+      <Label fx:id="humidity" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="324.0" prefHeight="36.0" prefWidth="71.0" text="humidity" textAlignment="CENTER" textFill="#655050">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
@@ -119,7 +119,7 @@
       <Line endX="79.5" endY="91.5" layoutX="358.0" layoutY="412.0" startX="79.5" startY="-55.0" />
       <Line endX="79.5" endY="91.5" layoutX="472.0" layoutY="412.0" startX="79.5" startY="-55.0" />
       <Line endX="79.5" endY="91.5" layoutX="582.0" layoutY="412.0" startX="79.5" startY="-55.0" />
-      <ImageView fx:id="humidityIcon" fitHeight="25.0" fitWidth="25.0" layoutX="96.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="humidityIcon" fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="day0" alignment="CENTER" layoutX="2.0" layoutY="360.0" prefHeight="20.0" prefWidth="100.0" text="Day 1" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
@@ -334,6 +334,6 @@
       <Text layoutX="4.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terms of Use  I  Privacy Policy  I  Accessibility  I  AdChoices  I  About us" />
       <ImageView fx:id="loadImgView" fitHeight="418.0" fitWidth="731.0" layoutX="22.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" visible="false" />
       <ListView fx:id="listCities" layoutX="198.0" layoutY="64.0" onMouseClicked="#handleListView" opacity="0.92" prefHeight="134.0" prefWidth="197.0" visible="false" />
-      <ImageView fx:id="windIcon" fitHeight="25.0" fitWidth="25.0" layoutX="176.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="windIcon" fitHeight="25.0" fitWidth="25.0" layoutX="245.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

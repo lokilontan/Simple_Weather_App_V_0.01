@@ -153,12 +153,9 @@ public class Controller {
 
     CurrentWeather CW = new CurrentWeather();
 
-
     int count = 0;
-    String newRadar = CW.getRadarImg();
-    //String newRadar2 = W.getRadarImg();
-    String dynamicRadar ;
-
+    String newRadar;
+    String dynamicRadar;
 
 
 
@@ -183,9 +180,11 @@ public class Controller {
         else listCities.setVisible(true);
     }
 
+
     public void initialize(){
 
         CW.fetchCurrent();
+        newRadar = CW.getRadarWithZip(CW.CurrentJson);
 
         try {
             Image imgCondition = new Image(CW.getImageString(CW.CurrentJson));
@@ -200,7 +199,7 @@ public class Controller {
             animatedSatImg.setImage(animatedImgSat);
             animatedSatImg.setVisible(false);
 
-            Image imgRadar = new Image(CW.getRadarImg());
+            Image imgRadar = new Image(CW.getRadarWithZip(CW.CurrentJson));
             radarImg.setImage(imgRadar);
             radarImg.setVisible(true);
 
@@ -296,7 +295,7 @@ public class Controller {
         try {
 
             //reset the url for the radar
-            newRadar = CW.getRadarImg();
+            newRadar = CW.getRadarWithZip(CW.CurrentJson);
 
             Image animatedImgRadar = new Image(CW.getRadarAImg());
             animatedRadarImg.setImage(animatedImgRadar);
@@ -306,7 +305,7 @@ public class Controller {
             animatedSatImg.setImage(animatedImgSat);
             animatedSatImg.setVisible(false);
 
-            Image imgRadar = new Image(CW.getRadarImg());
+            Image imgRadar = new Image(CW.getRadarWithZip(CW.CurrentJson));
             radarImg.setImage(imgRadar);
             radarImg.setVisible(true);
 
@@ -468,6 +467,7 @@ public class Controller {
             Weather W = new Weather(zipField.getText());
 
             W.fetch();
+            //dynamicRadar = W.getRadarImg();
 
             return W;
         }
@@ -573,77 +573,85 @@ public class Controller {
         animatedSatImg.setVisible(true);
     }
 
-   public String whichRadar(String radarUrl){
-
-        if (loc.getText().equals(CW.getCityState(CW.CurrentJson))) return CW.getRadarImg();
-        else return CW.getRadarImg();
+    public String changeRadarLink(String radar, int value, int start, int end, int cut)
+    {
+        int result = Integer.parseInt(radar.substring(start, end));
+        result = result + value;
+        String[] parts = radar.split("radius=");
+        String part1 = parts[0];
+        String part2 = parts[1].substring(cut);
+        radar = part1 + "radius=" + result + part2;
+        Image imgRadar = new Image(radar);
+        radarImg.setImage(imgRadar);
+        return radar;
     }
 
     public void handleZoomOut(ActionEvent e)
     {
-         whichRadar(newRadar);
-
-        if (newRadar.length() == 107)
+        if (loc.getText().equals(CW.getCityState(CW.CurrentJson)))
         {
-            int result = Integer.parseInt(newRadar.substring(85, 86));
-            result = result + 10;
-            String[] parts = newRadar.split("radius=");
-            String part1 = parts[0];
-            String part2 = parts[1].substring(1);
-            newRadar = part1 + "radius=" + result + part2;
-            Image imgRadar = new Image(newRadar);
-            radarImg.setImage(imgRadar);
-        }
-        else if(newRadar.length() >= 109) {
-            int result = Integer.parseInt(newRadar.substring(85, 88));
-            result = result + 10;
-            String[] parts = newRadar.split("radius=");
-            String part1 = parts[0];
-            String part2 = parts[1].substring(3);
-            newRadar = part1 + "radius=" + result + part2;
-            Image imgRadar = new Image(newRadar);
-            radarImg.setImage(imgRadar);
+            if (newRadar.length() == 106)
+            {
+                newRadar = changeRadarLink(newRadar, 10,84,85,1);
+            }
+            else if(newRadar.length() >= 108)
+            {
+                newRadar = changeRadarLink(newRadar, 10,84,87,3);
+            }
+            else
+            {
+                newRadar = changeRadarLink(newRadar, 10,84,86,2);
+            }
         }
         else
         {
-            int result = Integer.parseInt(newRadar.substring(85, 87));
-            result = result + 10;
-            String[] parts = newRadar.split("radius=");
-            String part1 = parts[0];
-            String part2 = parts[1].substring(2);
-            newRadar = part1 + "radius=" + result + part2;
-            Image imgRadar = new Image(newRadar);
-            radarImg.setImage(imgRadar);
+            if (dynamicRadar.length() == 106)
+            {
+                dynamicRadar = changeRadarLink(dynamicRadar, 10,84,85,1);
+            }
+            else if(dynamicRadar.length() >= 108)
+            {
+                dynamicRadar = changeRadarLink(dynamicRadar, 10,84,87,3);
+            }
+            else
+            {
+                dynamicRadar = changeRadarLink(dynamicRadar, 10,84,86,2);
+            }
         }
     }
 
     public void handleZoomIn(ActionEvent e)
     {
-        //newRadar = whichRadar();
-        if (newRadar.length() == 107)
+        if (loc.getText().equals(CW.getCityState(CW.CurrentJson)))
         {
-            CopyRightBox.display("Warning", "Too close to zoom in anymore!" );
-        }
-        else if(newRadar.length() >= 109) {
-            int result = Integer.parseInt(newRadar.substring(85, 88));
-            result = result - 10;
-            String[] parts = newRadar.split("radius=");
-            String part1 = parts[0];
-            String part2 = parts[1].substring(3);
-            newRadar = part1 + "radius=" + result + part2;
-            Image imgRadar = new Image(newRadar);
-            radarImg.setImage(imgRadar);
+            if (newRadar.length() == 106)
+            {
+                CopyRightBox.display("Warning", "Too close to zoom in anymore!" );
+            }
+            else if(newRadar.length() >= 108)
+            {
+                newRadar = changeRadarLink(newRadar, -10,84,87,3);
+            }
+            else
+            {
+                newRadar = changeRadarLink(newRadar, -10,84,86,2);
+            }
         }
         else
         {
-            int result = Integer.parseInt(newRadar.substring(85, 87));
-            result = result - 10;
-            String[] parts = newRadar.split("radius=");
-            String part1 = parts[0];
-            String part2 = parts[1].substring(2);
-            newRadar = part1 + "radius=" + result + part2;
-            Image imgRadar = new Image(newRadar);
-            radarImg.setImage(imgRadar);
+            if (dynamicRadar.length() == 106)
+            {
+                CopyRightBox.display("Warning", "Too close to zoom in anymore!" );
+            }
+            else if(dynamicRadar.length() >= 108)
+            {
+                dynamicRadar = changeRadarLink(dynamicRadar, -10,84,87,3);
+            }
+            else
+            {
+                dynamicRadar = changeRadarLink(dynamicRadar, -10,84,86,2);
+            }
         }
     }
+
 }

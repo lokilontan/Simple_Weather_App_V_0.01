@@ -13,8 +13,9 @@ import java.net.URL;
 
 public class CurrentWeather {
 
+
     public JsonElement CurrentJson; //json for current weather
-    public JsonElement CurrentRSJson;
+    //public JsonElement CurrentRSJson;
 
     public String getImageString(JsonElement j){
         return j.getAsJsonObject().get("current_observation").getAsJsonObject()
@@ -26,6 +27,13 @@ public class CurrentWeather {
         return j.getAsJsonObject().get("current_observation").getAsJsonObject()
                 .get("display_location").getAsJsonObject()
                 .get("full").getAsString();
+    }
+
+    public String getZip(JsonElement j)
+    {
+        return j.getAsJsonObject().get("current_observation").getAsJsonObject()
+                .get("display_location").getAsJsonObject()
+                .get("zip").getAsString() ;
     }
 
     public String getTemperatureF(JsonElement j)
@@ -111,11 +119,12 @@ public class CurrentWeather {
         return "http://api.wunderground.com/api/1655f919bbcd29ed/animatedsatellite/q/autoip.gif?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=50";
     }
 
-    public String getRadarImg()
+    public String getRadarWithZip(JsonElement j)
     {
-        return "http://api.wunderground.com/api/1655f919bbcd29ed/radar/q/autoip.png?newmaps=1&radius=250&width=250&height=250";
+        return "http://api.wunderground.com/api/1655f919bbcd29ed/radar/q/" + j.getAsJsonObject().get("current_observation").getAsJsonObject()
+                .get("display_location").getAsJsonObject()
+                .get("zip").getAsString() + ".png?newmaps=1&radius=250&width=250&height=250";
     }
-
 
 
     //Method for getting weather for location based on the user`s IP
@@ -174,7 +183,7 @@ public class CurrentWeather {
         }
     }
 
-     public String getRadarImg(JsonElement j)
+     public String getRadarWithZip(JsonElement j)
      {
         return j.getAsJsonObject().get("radar").getAsJsonObject()
              .get("image_url").getAsString();

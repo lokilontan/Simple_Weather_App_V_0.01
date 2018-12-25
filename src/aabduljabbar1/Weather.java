@@ -20,6 +20,7 @@ public class Weather {
     public Image animatedImgRadar;
     public Image animatedImgSat;
     public Image imgRadar;
+    public String dynamicRadar;
 
 
     public Weather(String zipCode) {
@@ -151,6 +152,7 @@ public class Weather {
             animatedImgRadar = new Image(getRadarAImg());
             animatedImgSat = new Image(getSatAImg());
             imgRadar = new Image(getRadarImg());
+            dynamicRadar = new String(getRadarImg());
 
         } catch (java.net.MalformedURLException mue) {
             System.out.println("URL not valid");
@@ -183,7 +185,7 @@ public class Weather {
         }
     }
 
-     public String getRadarImg(JsonElement j) {
+     public String getRadarWithZip(JsonElement j) {
      return j.getAsJsonObject().get("radar").getAsJsonObject()
      .get("image_url").getAsString();
      }
